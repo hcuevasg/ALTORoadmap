@@ -503,7 +503,7 @@ h3 { font-size: 1.4rem; font-weight: 600; }
 .tl-owner { font-size: 0.77rem; font-weight: 700; color: var(--primary); background: rgba(64,115,184,0.1); border: 1px solid rgba(64,115,184,0.2); padding: 4px 10px; border-radius: 8px; }
 .tl-prod { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.55; }
 
-.tl-closer { max-width: 820px; margin: 36px auto 0; text-align: center; font-size: 1.02rem; color: var(--text-secondary); line-height: 1.6; }
+.tl-closer { max-width: 820px; margin: 64px auto 0; text-align: center; font-size: 1.02rem; color: var(--text-secondary); line-height: 1.6; }
 .tl-closer strong { color: var(--text); }
 
 @media (max-width: 900px) {
