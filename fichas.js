@@ -316,7 +316,7 @@
   ];
 
   // ============================================================
-  //  Render
+  //  Render (bilingüe: usa window.MP_FICHAS_EN / FICHAS_T_EN en EN)
   // ============================================================
   const host = document.getElementById('mpFichas');
   if (!host) return;
@@ -327,6 +327,28 @@
     if (txt != null) n.textContent = txt;
     return n;
   };
+
+  // ---- helpers de idioma ----
+  const I = window.I18N;
+  const isEN = () => I && I.lang === 'en';
+  function U(k) { return I ? I.ui(k) : k; }
+  function CN(code) { return I ? I.country(code) : (CO_META[code] || {}).name; }
+  function TG(t) { return I ? I.tagLabel(t) : t; }
+  function tEN(t) { return (isEN() && window.FICHAS_T_EN && window.FICHAS_T_EN[t]) ? window.FICHAS_T_EN[t] : t; }
+  function mpData(mp) {
+    const en = (isEN() && window.MP_FICHAS_EN && window.MP_FICHAS_EN[mp.n]) ? window.MP_FICHAS_EN[mp.n] : null;
+    if (!en) return { title: mp.title, dolor: mp.dolor, paises: mp.paises, nota: mp.nota, lineas: mp.lineas };
+    let lineas = en.lineas || mp.lineas;
+    // arrastrar el flag `cond` (estilo "condiciona al resto") desde el ES por índice
+    if (en.lineas) lineas = en.lineas.map((g, i) => ({ g: g.g, items: g.items, cond: (mp.lineas[i] && mp.lineas[i].cond) || g.cond }));
+    return {
+      title: en.title || mp.title,
+      dolor: en.dolor || mp.dolor,
+      paises: en.paises || mp.paises,
+      nota: (en.nota != null ? en.nota : mp.nota),
+      lineas: lineas,
+    };
+  }
 
   function buildLineas(lineas) {
     const wrap = el('div', 'fc-lineas-wrap');
@@ -344,18 +366,17 @@
   function buildCountryPanel(panel, mp, code) {
     const list = mp.brechas[code] || [];
     const meta = CO_META[code];
+    const cname = CN(code);
     panel.textContent = '';
 
     const head = el('div', 'fc-cd-head');
-    head.appendChild(el('span', 'fc-cd-flag' + (meta.us ? ' us' : ''), meta.name));
+    head.appendChild(el('span', 'fc-cd-flag' + (meta.us ? ' us' : ''), cname));
     head.appendChild(el('span', 'fc-cd-count',
-      list.length === 1
-        ? '1 brecha canalizada a este macroproyecto'
-        : list.length + ' brechas canalizadas a este macroproyecto'));
+      (list.length === 1 ? U('cd1') : U('cdN').replace('%n', list.length))));
     panel.appendChild(head);
 
     if (!list.length) {
-      panel.appendChild(el('p', 'fc-empty', 'Sin brechas canalizadas a este macroproyecto desde ' + meta.name + '.'));
+      panel.appendChild(el('p', 'fc-empty', U('cdEmpty').replace('%c', cname)));
       return;
     }
 
@@ -364,15 +385,15 @@
       const has = window.BRECHAS_DETAIL && window.BRECHAS_DETAIL[b.id];
       const row = el('div', 'fc-brecha' + (meta.us ? ' us' : '') + (has ? '' : ' nodet'));
       row.appendChild(el('span', 'fc-brecha-code', b.id));
-      row.appendChild(el('span', 'fc-brecha-title', b.t));
+      row.appendChild(el('span', 'fc-brecha-title', tEN(b.t)));
       if (b.tag) {
-        row.appendChild(el('span', 'fc-tag ' + (TAG_CLASS[b.tag] || 'note'), b.tag));
+        row.appendChild(el('span', 'fc-tag ' + (TAG_CLASS[b.tag] || 'note'), TG(b.tag)));
       }
       if (has) {
         row.appendChild(el('span', 'fc-brecha-go', '→'));
         row.setAttribute('role', 'button');
         row.tabIndex = 0;
-        row.title = 'Ver detalle de ' + b.id;
+        row.title = U('verDetalle') + ' ' + b.id;
         const open = () => { if (window.openBrechaDetalle) window.openBrechaDetalle(b.id); };
         row.addEventListener('click', open);
         row.addEventListener('keydown', (e) => {
@@ -385,6 +406,7 @@
   }
 
   function buildFicha(mp) {
+    const d = mpData(mp);
     const item = el('div', 'mp-item');
     item.dataset.mp = mp.n;
 
@@ -393,7 +415,7 @@
     row.type = 'button';
     row.setAttribute('aria-expanded', 'false');
     row.appendChild(el('span', 'mp-row-id', 'MP' + mp.n));
-    row.appendChild(el('span', 'mp-row-title', mp.title));
+    row.appendChild(el('span', 'mp-row-title', d.title));
     row.appendChild(el('span', 'mp-row-pct', mp.pct));
     row.appendChild(el('span', 'mp-row-ic'));
     item.appendChild(row);
@@ -404,41 +426,41 @@
     // 1) El dolor
     const b1 = el('div', 'fc-block fc-dolor');
     b1.appendChild(el('span', 'fc-step', '1'));
-    b1.appendChild(el('h4', 'fc-h', 'El dolor'));
-    b1.appendChild(el('p', 'fc-dolor-text', mp.dolor));
+    b1.appendChild(el('h4', 'fc-h', U('elDolor')));
+    b1.appendChild(el('p', 'fc-dolor-text', d.dolor));
     inner.appendChild(b1);
 
     // 2) Líneas de trabajo
     const b2 = el('div', 'fc-block fc-lineas');
     b2.appendChild(el('span', 'fc-step', '2'));
-    b2.appendChild(el('h4', 'fc-h', 'Líneas de trabajo'));
-    b2.appendChild(buildLineas(mp.lineas));
+    b2.appendChild(el('h4', 'fc-h', U('lineas')));
+    b2.appendChild(buildLineas(d.lineas));
     inner.appendChild(b2);
 
     // 3) Transversalidad
     const b3 = el('div', 'fc-block fc-trans');
     b3.appendChild(el('span', 'fc-step', '3'));
-    b3.appendChild(el('h4', 'fc-h', 'Transversalidad'));
+    b3.appendChild(el('h4', 'fc-h', U('transversalidad')));
     const metrics = el('div', 'fc-metrics');
     const m1 = el('div', 'fc-metric');
     m1.appendChild(el('span', 'fc-metric-v', String(mp.entradas)));
-    m1.appendChild(el('span', 'fc-metric-k', 'entradas'));
+    m1.appendChild(el('span', 'fc-metric-k', U('entradas')));
     const m2 = el('div', 'fc-metric');
     m2.appendChild(el('span', 'fc-metric-v', mp.pct));
-    m2.appendChild(el('span', 'fc-metric-k', 'del levantamiento'));
+    m2.appendChild(el('span', 'fc-metric-k', U('delLevantamiento')));
     const m3 = el('div', 'fc-metric fc-metric-wide');
-    m3.appendChild(el('span', 'fc-metric-v sm', mp.paises));
-    m3.appendChild(el('span', 'fc-metric-k', 'países con evidencia'));
+    m3.appendChild(el('span', 'fc-metric-v sm', d.paises));
+    m3.appendChild(el('span', 'fc-metric-k', U('paisesEvidencia')));
     metrics.appendChild(m1); metrics.appendChild(m2); metrics.appendChild(m3);
     b3.appendChild(metrics);
-    if (mp.nota) b3.appendChild(el('p', 'fc-trans-note', mp.nota));
+    if (d.nota) b3.appendChild(el('p', 'fc-trans-note', d.nota));
     inner.appendChild(b3);
 
     // 4) Botones por país → brechas
     const b4 = el('div', 'fc-block fc-paises-block');
     b4.appendChild(el('span', 'fc-step', '4'));
-    b4.appendChild(el('h4', 'fc-h', 'Brechas canalizadas, por país'));
-    b4.appendChild(el('p', 'fc-hint', 'Pulsa un país para desplegar todas sus brechas en este macroproyecto, con su ID y título.'));
+    b4.appendChild(el('h4', 'fc-h', U('brechasPorPais')));
+    b4.appendChild(el('p', 'fc-hint', U('hint')));
 
     const btns = el('div', 'fc-country-btns');
     const panel = el('div', 'fc-country-panel');
@@ -455,7 +477,7 @@
       img.className = 'fc-cbtn-flag';
       img.src = meta.flag; img.alt = ''; img.setAttribute('aria-hidden', 'true');
       btn.appendChild(img);
-      btn.appendChild(el('span', 'fc-cbtn-name', meta.name));
+      btn.appendChild(el('span', 'fc-cbtn-name', CN(code)));
       btn.appendChild(el('span', 'fc-cbtn-n', String(count)));
 
       btn.addEventListener('click', () => {
@@ -486,12 +508,13 @@
     return { item, row, detail };
   }
 
-  const built = MP.map(buildFicha);
-  built.forEach((b) => host.appendChild(b.item));
+  // ============================================================
+  //  Acordeón + render (re-render al cambiar de idioma)
+  // ============================================================
+  let built = [];
+  let staggerSet = false;
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // ============================================================
-  //  Acordeón (expand-in-place) — uno abierto a la vez
-  // ============================================================
   function openItem(b) {
     b.item.classList.add('active');
     b.row.setAttribute('aria-expanded', 'true');
@@ -503,44 +526,52 @@
     };
     b.detail.addEventListener('transitionend', done);
   }
-
   function closeItem(b) {
-    // reset país
     b.item.querySelectorAll('.fc-cbtn.active').forEach((c) => {
       c.classList.remove('active');
       c.setAttribute('aria-pressed', 'false');
     });
     const panel = b.item.querySelector('.fc-country-panel');
     if (panel) panel.hidden = true;
-
     b.item.classList.remove('active');
     b.row.setAttribute('aria-expanded', 'false');
     b.detail.style.maxHeight = b.detail.scrollHeight + 'px';
     requestAnimationFrame(() => requestAnimationFrame(() => { b.detail.style.maxHeight = '0px'; }));
   }
 
-  built.forEach((b) => {
-    b.row.addEventListener('click', () => {
-      const willOpen = !b.item.classList.contains('active');
-      built.forEach((o) => { if (o !== b && o.item.classList.contains('active')) closeItem(o); });
-      if (willOpen) openItem(b); else closeItem(b);
+  function renderAll() {
+    host.textContent = '';
+    built = MP.map(buildFicha);
+    built.forEach((b) => host.appendChild(b.item));
+
+    built.forEach((b) => {
+      b.row.addEventListener('click', () => {
+        const willOpen = !b.item.classList.contains('active');
+        built.forEach((o) => { if (o !== b && o.item.classList.contains('active')) closeItem(o); });
+        if (willOpen) openItem(b); else closeItem(b);
+      });
     });
-  });
 
-  // Abrir MP1 por defecto (sin animación)
-  if (built[0]) {
-    built[0].item.classList.add('active');
-    built[0].row.setAttribute('aria-expanded', 'true');
-    built[0].detail.style.maxHeight = 'none';
+    if (built[0]) {
+      built[0].item.classList.add('active');
+      built[0].row.setAttribute('aria-expanded', 'true');
+      built[0].detail.style.maxHeight = 'none';
+    }
+
+    if (!prefersReduced) {
+      host.classList.add('stagger');
+      built.forEach((b, i) => b.item.style.setProperty('--d', i * 70 + 'ms'));
+      if (!staggerSet) {
+        new IntersectionObserver((entries, obs) => {
+          entries.forEach((e) => { if (e.isIntersecting) { host.classList.add('revealed'); obs.disconnect(); } });
+        }, { threshold: 0.08 }).observe(host);
+        staggerSet = true;
+      } else {
+        host.classList.add('revealed');
+      }
+    }
   }
 
-  // Reveal escalonado al hacer scroll
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!prefersReduced) {
-    host.classList.add('stagger');
-    built.forEach((b, i) => b.item.style.setProperty('--d', i * 70 + 'ms'));
-    new IntersectionObserver((entries, obs) => {
-      entries.forEach((e) => { if (e.isIntersecting) { host.classList.add('revealed'); obs.disconnect(); } });
-    }, { threshold: 0.08 }).observe(host);
-  }
+  renderAll();
+  if (I) I.onChange(renderAll);
 })();
