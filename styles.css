@@ -108,6 +108,13 @@ h3 { font-size: 1.4rem; font-weight: 600; }
 }
 .header-glosario svg, .header-tax svg { width: 15px; height: 15px; flex-shrink: 0; color: var(--primary); transition: color 0.2s ease; }
 .header-glosario:hover, .header-tax:hover { border-color: var(--primary); color: var(--primary); background: rgba(64, 115, 184, 0.08); transform: none; box-shadow: none; }
+/* Hamburger toggle — base oculto en desktop (debe ir ANTES de los media queries) */
+.nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: 0; cursor: pointer; padding: 6px; }
+.nav-toggle span { width: 26px; height: 2px; background: var(--text); border-radius: 2px; transition: 0.3s; }
+.nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
 /* Navbar responsive: tools → icon-only, then collapse to hamburger */
 @media (max-width: 1200px) {
   .header-glosario span, .header-tax span { display: none; }
@@ -126,12 +133,6 @@ h3 { font-size: 1.4rem; font-weight: 600; }
   .main-nav.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
   .main-nav a { padding: 11px 14px; font-size: 0.95rem; }
 }
-
-.nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: 0; cursor: pointer; padding: 6px; }
-.nav-toggle span { width: 26px; height: 2px; background: var(--text); border-radius: 2px; transition: 0.3s; }
-.nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.nav-toggle.open span:nth-child(2) { opacity: 0; }
-.nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* ============================================================
    Buttons (ALTO pill style)
