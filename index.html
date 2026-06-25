@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roadmap Único de Desarrollo · Gestión Legal ALTO</title>
+  <meta name="description" content="Roadmap Único de Desarrollo, Gestión Legal ALTO — Fase 3: Acuerdo. Brechas Consolidadas y Macroproyectos (Informe 2.5)." />
+
+  <!-- Fonts: Raleway (ALTO brand font) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+
+  <!-- AOS scroll animations (same library ALTO uses) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Scroll progress bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a href="#hero" class="brand" aria-label="ALTO">
+        <img class="brand-logo" src="assets/alto-logo.svg" alt="ALTO" />
+      </a>
+      <nav class="main-nav" id="mainNav">
+        <a href="#contexto">El Proyecto</a>
+        <a href="#fases">Fases</a>
+        <a href="#cifras">Datos</a>
+        <a href="#macroproyectos">Macroproyectos</a>
+        <a href="#estrategia">Lectura Estratégica</a>
+        <a href="#cierre">Próximos Pasos</a>
+      </nav>
+      <div class="nav-actions">
+        <button type="button" class="btn header-glosario" id="glosarioBtn" aria-haspopup="dialog" aria-label="Glosario" title="Glosario">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          <span>Glosario</span>
+        </button>
+        <button type="button" class="btn header-tax" id="taxonomiaBtn" aria-haspopup="dialog" aria-label="Taxonomía" title="Taxonomía">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          <span>Taxonomía</span>
+        </button>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" id="hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <p class="eyebrow" data-aos="fade-down">Fase 3: Acuerdo</p>
+        <h1 class="hero-title" data-aos="fade-up">
+          Roadmap Único<br />
+          de Desarrollo
+        </h1>
+        <p class="hero-legal" data-aos="fade-up" data-aos-delay="80"><span class="accent">Gestión Legal</span> ALTO</p>
+        <p class="hero-sub" data-aos="fade-up" data-aos-delay="140">
+          Brechas Consolidadas y Macroproyectos. De 117 brechas levantadas a nueve
+          macroproyectos que orientan una hoja de ruta legal-tech regional.
+        </p>
+
+        <div class="hero-flags" data-aos="fade-up" data-aos-delay="200">
+          <span class="flags-label">Una operación regional</span>
+          <div class="flags-row">
+            <span class="flag-chip"><img src="assets/flags/mx.png" alt="Bandera de México" /><span>México</span></span>
+            <span class="flag-chip"><img src="assets/flags/co.png" alt="Bandera de Colombia" /><span>Colombia</span></span>
+            <span class="flag-chip"><img src="assets/flags/cl.png" alt="Bandera de Chile" /><span>Chile</span></span>
+            <span class="flag-chip"><img src="assets/flags/us.png" alt="Bandera de Estados Unidos" /><span>Estados Unidos</span></span>
+            <span class="flag-chip"><img src="assets/flags/es.png" alt="Bandera de España" /><span>España</span></span>
+          </div>
+        </div>
+
+        <div class="hero-tags" data-aos="fade-up" data-aos-delay="320">
+          <span class="hero-tag">Junio 2026</span>
+          <span class="hero-tag confidential">Uso Interno y Confidencial</span>
+        </div>
+        <div class="presenter" data-aos="fade-up" data-aos-delay="380">
+          <div class="presenter-avatar">
+            <img class="presenter-photo" src="assets/roberto.png" alt="Roberto Carrasco" onerror="this.style.display='none'" />
+            <span class="avatar-initial">R</span>
+          </div>
+          <div class="presenter-meta">
+            <span class="presenter-name">Sponsor del proyecto: Roberto Carrasco</span>
+            <span class="presenter-role">CTO · ALTO</span>
+          </div>
+        </div>
+      </div>
+      <a href="#contexto" class="scroll-hint" aria-label="Bajar">
+        <span></span>
+      </a>
+    </section>
+
+    <!-- ===================== VISIÓN / CEO ===================== -->
+    <section class="ceo-section" id="vision">
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <span>Plataforma única</span><i>•</i><span>Modelo común</span><i>•</i><span>Inteligencia operativa</span><i>•</i><span>Dato gobernado</span><i>•</i><span>Escalabilidad</span><i>•</i><span>Trazabilidad</span><i>•</i>
+          <span>Plataforma única</span><i>•</i><span>Modelo común</span><i>•</i><span>Inteligencia operativa</span><i>•</i><span>Dato gobernado</span><i>•</i><span>Escalabilidad</span><i>•</i><span>Trazabilidad</span><i>•</i>
+        </div>
+      </div>
+      <div class="container">
+        <div class="ceo-quote">
+          <span class="ceo-mark" aria-hidden="true">“</span>
+          <blockquote class="ceo-text">La plataforma legal no puede ser solo un registro. Tiene que ser una plataforma de gestión legal: ahí está nuestro core, de ahí nace el dato y eso es lo que hace único a ALTO.</blockquote>
+          <div class="ceo-attr" data-aos="fade-up">
+            <div class="ceo-avatar">
+              <img class="ceo-photo" src="assets/jorge.png" alt="Jorge Nazer" onerror="this.style.display='none'" />
+              <span class="avatar-initial">J</span>
+            </div>
+            <div class="ceo-meta">
+              <span class="ceo-role">Jorge Nazer · CEO ALTO</span>
+              <span class="ceo-date">Jueves 11 de Junio de 2026</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CONTEXTO ===================== -->
+    <section class="section" id="contexto">
+      <div class="container">
+        <div class="section-head" data-aos="fade-up">
+          <h2>El objetivo estratégico</h2>
+        </div>
+
+        <div class="quote-band objective-band" data-aos="fade-up">
+          <p>Habilitar una plataforma única de gestión legal para los países donde opera ALTO, evitando versiones diferenciadas por país y consolidando un modelo común que permita <strong>capturar impacto</strong>, <strong>activar oportunidades transversales</strong> y <strong>escalar las mejores prácticas e inteligencia operativa</strong> desarrolladas por los equipos.</p>
+        </div>
+
+        <div class="objectives-head" data-aos="zoom-in">
+          <span class="objectives-badge">Para alcanzarlo</span>
+          <h3>Cuatro <span class="grad">objetivos estratégicos</span></h3>
+        </div>
+        <div class="objectives">
+          <article class="obj-card" data-aos="zoom-in-up">
+            <div class="obj-tile">1</div>
+            <h3>Definir herramientas comunes para el trabajo legal</h3>
+            <p>Definir un conjunto compartido de capacidades, módulos, flujos, criterios de registro y herramientas de trabajo, resguardando la parametrización local necesaria para incorporar diferencias legales, procesales y operativas de cada país.</p>
+          </article>
+          <article class="obj-card" data-aos="zoom-in-up" data-aos-delay="100">
+            <div class="obj-tile">2</div>
+            <h3>Convertir experiencia local en capacidad común</h3>
+            <p>Recoger la inteligencia operativa desarrollada por los equipos legales de cada país, identificando buenas prácticas que permitan aumentar las capacidades del equipo legal y escalar aprendizajes a nivel grupo.</p>
+          </article>
+          <article class="obj-card" data-aos="zoom-in-up" data-aos-delay="200">
+            <div class="obj-tile">3</div>
+            <h3>Priorizar desarrollos según impacto y oportunidad</h3>
+            <p>Ordenar las iniciativas del roadmap en función de su contribución real a la operación legal, su capacidad de resolver necesidades relevantes y su potencial de generar valor transversal.</p>
+          </article>
+          <article class="obj-card" data-aos="zoom-in-up" data-aos-delay="300">
+            <div class="obj-tile">4</div>
+            <h3>Fortalecer trazabilidad, control y escalabilidad</h3>
+            <p>Avanzar hacia una gestión legal más trazable, gobernada y escalable, habilitando una evolución tecnológica coherente que apoye la escalabilidad futura de ALTO.</p>
+          </article>
+        </div>
+
+        <div class="grid grid-3" style="margin-top:50px">
+          <article class="card" data-aos="fade-up">
+            <h3>ALTO y Alliance</h3>
+            <p>ALTO protege activos. Sus clientes —principalmente retail— externalizan la protección y reportan a través de <strong>Alliance</strong>, la plataforma con la que ALTO presta el servicio.</p>
+          </article>
+          <article class="card" data-aos="fade-up" data-aos-delay="100">
+            <h3>Beta y Legacy</h3>
+            <p>Alliance opera hoy en su versión <strong>Beta</strong>; la anterior, <strong>Legacy</strong>, está en retiro. Todos los países operan en Beta, salvo Colombia, cuya migración está en proceso.</p>
+          </article>
+          <article class="card" data-aos="fade-up" data-aos-delay="200">
+            <h3>La tesis del roadmap</h3>
+            <p>ALTO no enfrenta 117 solicitudes aisladas, sino <strong>nueve macroproyectos funcionales</strong> que permiten orientar una hoja de ruta legal-tech regional.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FASES ===================== -->
+    <section class="section section-alt" id="fases">
+      <div class="container">
+        <div class="section-head" data-aos="fade-up">
+          <span class="kicker">La hoja de ruta</span>
+          <h2>Cuatro fases sucesivas</h2>
+          <p class="lead">La Fase 2 (Enfrentamiento) quedó cerrada con la consolidación de las 117 brechas. Estamos en la <strong>Fase 3: Acuerdo</strong>, donde se definen los mínimos comunes para la unificación de la plataforma.</p>
+        </div>
+
+        <div class="phases">
+          <div class="phase done" data-aos="fade-up">
+            <div class="phase-top"><span class="phase-num">1</span><span class="phase-status">✓ Completada</span></div>
+            <h3>Levantamiento</h3>
+            <p>Situación actual (AS-IS) por país. <strong>117 brechas documentadas.</strong></p>
+          </div>
+          <div class="phase done" data-aos="fade-up" data-aos-delay="100">
+            <div class="phase-top"><span class="phase-num">2</span><span class="phase-status">✓ Completada</span></div>
+            <h3>Enfrentamiento</h3>
+            <p>Revisión comparativa entre países y consolidación de las 117 brechas (Informe 2.5). <strong>Cerrada.</strong></p>
+          </div>
+          <div class="phase active" data-aos="fade-up" data-aos-delay="200">
+            <div class="phase-top"><span class="phase-num">3</span><span class="phase-status">● En ejecución</span></div>
+            <h3>Acuerdo</h3>
+            <p>Definición de los mínimos comunes para la unificación de la plataforma. <strong>Estamos aquí.</strong></p>
+          </div>
+          <div class="phase" data-aos="fade-up" data-aos-delay="300">
+            <div class="phase-top"><span class="phase-num">4</span><span class="phase-status">○ No iniciada</span></div>
+            <h3>Planeación Estratégica</h3>
+            <p>Plan corporativo de evolución de la plataforma para los próximos meses y años.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CIFRAS ===================== -->
+    <section class="section section-dark" id="cifras">
+      <div class="container">
+        <div class="section-head section-head-light" data-aos="fade-up">
+          <span class="kicker">Alcance cuantitativo</span>
+          <h2>117 levantadas, 92 compartidas</h2>
+          <p class="lead">Del enfrentamiento entre países, 92 de las 117 brechas mostraron evidencia compartida y pasaron al Informe 2.5. Esa depuración cambia la composición del levantamiento.</p>
+        </div>
+        <div class="grid grid-4 stats">
+          <div class="stat" data-aos="zoom-in"><span class="stat-value"><span class="stat-num" data-count="117">0</span></span><span class="stat-label">Brechas levantadas (Fase 1)</span></div>
+          <div class="stat" data-aos="zoom-in" data-aos-delay="100"><span class="stat-value"><span class="stat-num" data-count="92">0</span></span><span class="stat-label">Pasaron al Informe 2.5</span></div>
+          <div class="stat" data-aos="zoom-in" data-aos-delay="200"><span class="stat-value"><span class="stat-num" data-count="25">0</span></span><span class="stat-label">Quedaron fuera (locales y puntuales)</span></div>
+          <div class="stat" data-aos="zoom-in" data-aos-delay="300"><span class="stat-value"><span class="stat-num" data-count="79">0</span><span class="stat-suffix">%</span></span><span class="stat-label">Común a dos o más países</span></div>
+        </div>
+
+        <div class="cifras-blocks">
+          <!-- Composición del levantamiento -->
+          <div class="cifra-row" data-aos="fade-up">
+            <span class="cifra-label">Composición del levantamiento (117 brechas)</span>
+            <div class="country-bars">
+              <div class="cbar"><span class="cbar-name">México</span><div class="cbar-track"><div class="cbar-fill" style="width:100%">53</div></div></div>
+              <div class="cbar"><span class="cbar-name">Chile</span><div class="cbar-track"><div class="cbar-fill" style="width:85%">45</div></div></div>
+              <div class="cbar"><span class="cbar-name">Colombia</span><div class="cbar-track"><div class="cbar-fill" style="width:28%">15</div></div></div>
+              <div class="cbar"><span class="cbar-name">USA</span><div class="cbar-track"><div class="cbar-fill" style="width:8%">4</div></div></div>
+            </div>
+          </div>
+
+          <!-- Nivel de transversalidad -->
+          <div class="cifra-row" data-aos="fade-up">
+            <span class="cifra-label">Nivel de transversalidad</span>
+            <div class="trans-grid">
+              <div class="trans-card">
+                <span class="trans-pct">14,5%</span>
+                <span class="trans-count">17 brechas</span>
+                <h4>Transversal</h4>
+                <p>Necesidad común a los cuatro países (México, Chile, Colombia y USA).</p>
+              </div>
+              <div class="trans-card">
+                <span class="trans-pct">41,9%</span>
+                <span class="trans-count">49 brechas</span>
+                <h4>LATAM</h4>
+                <p>Común a México, Chile y Colombia (incluye las marcadas para revisar).</p>
+              </div>
+              <div class="trans-card">
+                <span class="trans-pct">22,2%</span>
+                <span class="trans-count">26 brechas</span>
+                <h4>Multipaís</h4>
+                <p>Confirmada en dos países; un tercero probable según antecedentes externos.</p>
+              </div>
+            </div>
+            <p class="cifra-note">En conjunto, estos tres niveles representan el <strong>79% de las brechas comunes a dos o más países</strong>. La marca de “revisar” no pone en duda a los países ya confirmados; solo deja pendiente si un país adicional ratifica la brecha y eleva su nivel de transversalidad (de dos a tres, o de tres a cuatro países).</p>
+          </div>
+
+          <!-- Tipo de solución -->
+          <div class="cifra-row" data-aos="fade-up">
+            <span class="cifra-label">Tipo de solución — antes y después del corte</span>
+            <div class="sol-tables">
+              <div class="sol-table">
+                <span class="sol-th">Sobre las 117 levantadas</span>
+                <table>
+                  <thead><tr><th>Tipo</th><th>Cant.</th><th>%</th></tr></thead>
+                  <tbody>
+                    <tr><td>Nuevo desarrollo</td><td>73</td><td>62,4%</td></tr>
+                    <tr><td>Configuración</td><td>19</td><td>16,2%</td></tr>
+                    <tr><td>Modificar funcionalidad</td><td>19</td><td>16,2%</td></tr>
+                    <tr><td>Otros</td><td>6</td><td>5,1%</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="sol-table">
+                <span class="sol-th">Sobre las 92 compartidas</span>
+                <table>
+                  <thead><tr><th>Tipo</th><th>Cant.</th><th>%</th></tr></thead>
+                  <tbody>
+                    <tr><td>Nuevo desarrollo</td><td>62</td><td>67,4%</td></tr>
+                    <tr><td>Configuración</td><td>13</td><td>14,1%</td></tr>
+                    <tr><td>Modificar funcionalidad</td><td>12</td><td>13,0%</td></tr>
+                    <tr><td>Otros</td><td>5</td><td>5,4%</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <p class="cifra-note">Estos porcentajes son una foto, no un cierre. Si un país reclama una brecha hoy fuera del corte, el universo se ajusta — como ha ocurrido en cada fase.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== BRECHAS FUERA DEL CORTE ===================== -->
+    <section class="section section-alt" id="fuera">
+      <div class="container">
+        <div class="section-head" data-aos="fade-up">
+          <span class="kicker">Brecha literal vs. dolor operativo</span>
+          <h2>Las 25 que no pasaron como línea propia</h2>
+          <p class="lead">No están descartadas. La consolidación no trabaja sobre la solicitud literal de cada país, sino sobre el <strong>dolor operativo</strong> que esa solicitud revela. Estas brechas no pasaron al corte como petición específica o local, pero su dolor se retoma —<strong>por subsunción</strong>— dentro de uno de los nueve macroproyectos. Abre cada brecha para ver en qué macroproyecto se subsume su dolor.</p>
+        </div>
+        <div class="fuera-tabs" role="tablist" aria-label="Brechas fuera del corte por país" data-aos="fade-up">
+          <button class="fuera-tab active" type="button" data-c="MX">México <span>16</span></button>
+          <button class="fuera-tab" type="button" data-c="CL">Chile <span>6</span></button>
+          <button class="fuera-tab" type="button" data-c="CO">Colombia <span>2</span></button>
+          <button class="fuera-tab" type="button" data-c="USA">USA <span>1</span></button>
+        </div>
+        <div class="fuera-list" id="fueraList" data-aos="fade-up"></div>
+      </div>
+    </section>
+
+    <!-- ===================== TESIS (lead-in a macroproyectos) ===================== -->
+    <section class="thesis-section" id="tesis">
+      <div class="container">
+        <div class="thesis" data-aos="fade-up">
+          <span class="thesis-rule" aria-hidden="true"></span>
+          <p class="thesis-text">El levantamiento entregó un <span class="t-soft">listado</span>; la consolidación entrega una <span class="t-strong">estructura</span>. Bajo las 117 brechas hay <span class="t-strong">9 dolores comunes</span>, y dentro de cada uno, sus propios frentes de trabajo.</p>
+          <span class="thesis-tag">La lógica de los nueve macroproyectos</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== MACROPROYECTOS (explorador interactivo) ===================== -->
+    <section class="section section-alt" id="macroproyectos">
+      <div class="container">
+        <div class="section-head" data-aos="fade-up">
+          <span class="kicker">Los nueve macroproyectos</span>
+          <h2>De brechas a portafolios</h2>
+          <p class="lead">Una ficha por macroproyecto, con la misma estructura en las nueve: el dolor, las líneas de trabajo, la transversalidad y las brechas que lo conforman país por país.</p>
+        </div>
+
+        <div class="encargo-hoy" data-aos="fade-up">
+          <div class="encargo-hoy-head">
+            <span class="encargo-hoy-kicker">El encargo</span>
+            <h3>Qué se espera de ustedes hoy</h3>
+            <p>Tres cosas concretas, para cada macroproyecto.</p>
+          </div>
+          <div class="encargo-hoy-grid">
+            <article class="encargo-hoy-card">
+              <span class="encargo-hoy-num">1</span>
+              <h4>Confirmar la transversalidad</h4>
+              <p>Para cada macroproyecto, decirnos si ese dolor también es suyo o no. Que una necesidad sea común a varios países es lo que la convierte en candidata a mínimo común; que sea local también es una respuesta válida y necesaria.</p>
+            </article>
+            <article class="encargo-hoy-card">
+              <span class="encargo-hoy-num">2</span>
+              <h4>Observar cómo lo resolverían</h4>
+              <p>No el detalle técnico, sino la mirada de su operación: qué no puede faltar, qué restricción propia hay que respetar, qué experiencia ya tienen que sirva al resto.</p>
+            </article>
+            <article class="encargo-hoy-card">
+              <span class="encargo-hoy-num">3</span>
+              <h4>Aportar insumos para priorizar</h4>
+              <p>Qué macroproyectos son urgentes para su país y cuáles pueden esperar — la base de la conversación de priorización que viene en las subetapas siguientes de la Fase 3.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="mp-legend" data-aos="fade-up">
+          <span class="mp-legend-title">Cómo leer las etiquetas de las brechas</span>
+          <ul class="mp-legend-items">
+            <li><span class="fc-tag sub">subsunción</span> brecha local incorporada por su función</li>
+            <li><span class="fc-tag dol2">2º dolor</span> la misma brecha contada como una segunda entrada</li>
+            <li><span class="fc-tag cfg">config. local</span> parametrización por país</li>
+            <li><span class="fc-tag tx">Transversal</span> brecha común a los cuatro países</li>
+          </ul>
+        </div>
+
+        <!-- Las nueve fichas se renderizan desde fichas.js -->
+        <div class="mp-accordion mp-fichas" id="mpFichas"></div>
+      </div>
+    </section>
+
+    <!-- ===================== SECUENCIA (cierra el bloque de macroproyectos) ===================== -->
+    <section class="section section-alt" id="secuencia">
+      <div class="container">
+        <div class="section-head" data-aos="fade-up">
+          <span class="kicker">La secuencia que ordena el roadmap</span>
+          <h2>Los nueve macroproyectos tienen un orden</h2>
+          <p class="lead">No se abordan en cualquier secuencia. Bajo todos hay un patrón de tres capas que fija por dónde se parte y por qué.</p>
+        </div>
+
+        <div class="layers">
+          <div class="layer" data-aos="fade-right">
+            <span class="layer-num">1</span>
+            <div><h3>Faltan campos <span class="layer-mp">MP1</span></h3><p>A la plataforma le faltan campos y estructuras para registrar la información que la operación necesita.</p></div>
+          </div>
+          <div class="layer-arrow" data-aos="fade" aria-hidden="true">↓</div>
+          <div class="layer" data-aos="fade-right" data-aos-delay="100">
+            <span class="layer-num">2</span>
+            <div><h3>El dato vive afuera <span class="layer-mp">MP1</span></h3><p>Como consecuencia, el dato nace y vive fuera de la plataforma —planillas, drives, mensajería— con traspasos manuales y sin responsable de su calidad.</p></div>
+          </div>
+          <div class="layer-arrow" data-aos="fade" data-aos-delay="100" aria-hidden="true">↓</div>
+          <div class="layer" data-aos="fade-right" data-aos-delay="200">
+            <span class="layer-num">3</span>
+            <div><h3>Sin capacidad de explotación <span class="layer-mp">MP2</span></h3><p>Aun si el dato existiera, no hay capacidad de BI suficiente para construir la reportería que los países requieren, aunque las herramientas (Discovery, Viewer, Insights) ya existan.</p></div>
+          </div>
+        </div>
+
+        <div class="order-band" data-aos="zoom-in">
+          <p class="order-flow">
+            <span>Flujo operativo</span><i>→</i><span>Campos</span><i>→</i><span>Dato con calidad</span><i>→</i><span>Reportería</span>
+          </p>
+          <p class="order-quote">Primero se ordena el flujo operativo (MP3), porque incorporar campos sobre un proceso deficiente sería digitalizar la ineficiencia; luego los campos que ese flujo requiere (MP1); con los campos en uso, el dato nace con calidad; y solo entonces la reportería rinde (MP2). <strong>El dashboard sale del dato, no al revés.</strong></p>
+        </div>
+
+        <p class="seq-closer" data-aos="fade-up">Por eso el diagnóstico no pertenece a un macroproyecto: es el hilo que conecta MP1, MP2 y MP3 y fija la secuencia de inversión del roadmap.</p>
+      </div>
+    </section>
+
+    <!-- ===================== ESTRATEGIA ===================== -->
+    <section class="section" id="estrategia">
+      <div class="container">
+        <div class="section-head" data-aos="fade-up">
+          <span class="kicker">Lecturas estratégicas</span>
+          <h2>Cuatro conclusiones para la discusión de mínimos comunes</h2>
+          <p class="lead">Más allá de las carteras, el ejercicio revela lecturas de conjunto como insumo para el acuerdo.</p>
+        </div>
+
+        <div class="grid grid-2">
+          <article class="strat" data-aos="fade-right">
+            <span class="strat-num">1</span>
+            <h3>Un modelo común basado en aprendizaje compartido</h3>
+            <p>Las operaciones tienen más en común de lo que parecía: enfrentan problemas y necesidades similares, pero los resuelven de forma aislada. La oportunidad es transformar la experiencia dispersa en conocimiento compartido y mejores prácticas replicables.</p>
+          </article>
+          <article class="strat" data-aos="fade-left">
+            <span class="strat-num">2</span>
+            <h3>Una operación legal medible</h3>
+            <p>El desafío no es solo registrar mejor, sino construir una operación medible: tiempos, carga por etapa, cumplimiento, resultados y desviaciones — para distinguir lo que genera valor de lo que se mantiene por inercia y eliminar el desperdicio.</p>
+          </article>
+          <article class="strat" data-aos="fade-right" data-aos-delay="100">
+            <span class="strat-num">3</span>
+            <h3>De registro pasivo a herramienta activa</h3>
+            <p>La plataforma debe orientar, advertir y acompañar: identificar hitos críticos, plazos y desviaciones del protocolo. Una herramienta que solo registra conoce ex post; una que guía y valida previene errores y reduce riesgos.</p>
+          </article>
+          <article class="strat" data-aos="fade-left" data-aos-delay="100">
+            <span class="strat-num">4</span>
+            <h3>Gestión penal alineada al propósito</h3>
+            <p>Vincular la gestión técnica del caso con indicadores de resultado, impacto y disuasión. El objetivo no es solo tramitar bien, sino asegurar que el esfuerzo legal contribuya de forma medible a procesos más eficientes y a la prevención.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== GLOSARIO ===================== -->
+    <!-- ===================== CIERRE / PRÓXIMOS PASOS ===================== -->
+    <section class="section" id="cierre">
+      <div class="container">
+        <div class="section-head" data-aos="fade-up">
+          <span class="kicker">Próximos pasos</span>
+          <h2>Qué viene después de hoy</h2>
+          <p class="lead">Esta reunión es la actividad 3.1, que abre la Fase 3. Lo que recojamos hoy alimenta la redacción del acuerdo, su validación y el inicio de la planeación.</p>
+        </div>
+
+        <div class="roadmap-tl">
+          <!-- Fase 3 · Acuerdo -->
+          <div class="tl-phase" data-aos="fade-up">
+            <div class="tl-phase-label">
+              <span class="tl-phase-tag">Fase 3</span><span class="tl-phase-name">· Acuerdo</span>
+            </div>
+            <div class="tl-track">
+              <article class="tl-hito here">
+                <span class="tl-node"></span>
+                <div class="tl-card">
+                  <div class="tl-card-top">
+                    <span class="tl-code">3.1</span>
+                    <span class="tl-here-badge">Estamos aquí</span>
+                  </div>
+                  <h3>Reunión de trabajo de acuerdo</h3>
+                  <div class="tl-meta">
+                    <span class="tl-date">19 jun–03 jul</span>
+                    <span class="tl-owner">Todos</span>
+                  </div>
+                  <p class="tl-prod">Presentar los nueve macroproyectos y recoger de cada país la confirmación de transversalidad, las observaciones sobre cómo resolver y los insumos de priorización.</p>
+                </div>
+              </article>
+              <article class="tl-hito">
+                <span class="tl-node"></span>
+                <div class="tl-card">
+                  <div class="tl-card-top"><span class="tl-code">3.2</span></div>
+                  <h3>Redacción del acuerdo</h3>
+                  <div class="tl-meta">
+                    <span class="tl-date">30 jun–21 jul</span>
+                    <span class="tl-owner">Legal-Tech / TI</span>
+                  </div>
+                  <p class="tl-prod">Integrar lo recogido y redactar el Documento de Mínimos Comunes: qué se estandariza como mínimo corporativo y qué se mantiene como configuración local, con su priorización.</p>
+                </div>
+              </article>
+              <article class="tl-hito">
+                <span class="tl-node"></span>
+                <div class="tl-card">
+                  <div class="tl-card-top"><span class="tl-code">3.3</span></div>
+                  <h3>Revisión del acuerdo final</h3>
+                  <div class="tl-meta">
+                    <span class="tl-date">22 jul–13 ago</span>
+                    <span class="tl-owner">Comité TI</span>
+                  </div>
+                  <p class="tl-prod">Revisión y validación formal del acuerdo por el Comité (CEO · CFO · CTO · Country Managers). Su cierre habilita la Fase 4.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <!-- Fase 4 · Planeación -->
+          <div class="tl-phase p4" data-aos="fade-up" data-aos-delay="120">
+            <div class="tl-phase-label">
+              <span class="tl-phase-tag">Fase 4</span><span class="tl-phase-name">· Planeación</span>
+            </div>
+            <div class="tl-track">
+              <article class="tl-hito">
+                <span class="tl-node"></span>
+                <div class="tl-card">
+                  <div class="tl-card-top"><span class="tl-code">4</span></div>
+                  <h3>Inicio de la Planeación</h3>
+                  <div class="tl-meta">
+                    <span class="tl-date">desde el 14 ago</span>
+                    <span class="tl-owner">Sponsor TI</span>
+                  </div>
+                  <p class="tl-prod">Sobre los mínimos comunes acordados, construir el roadmap técnico y el cronograma de implementación final.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+
+        <p class="tl-closer" data-aos="fade-up">El término del roadmap se definirá en las Fases 3 y 4. <strong>El Acuerdo de Mínimos Comunes es la base formal de toda la planeación corporativa de la plataforma única.</strong></p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img class="footer-logo" src="assets/alto-logo-white.svg" alt="ALTO" />
+        <p>Roadmap Único de Desarrollo — Gestión Legal. Reunión de trabajo de acuerdo 3.1: Brechas Consolidadas y Macroproyectos.</p>
+      </div>
+      <div class="footer-meta">
+        <span>Fase 3: Acuerdo</span>
+        <span>·</span>
+        <span>Junio 2026</span>
+        <span>·</span>
+        <span class="confidential-text">Uso Interno y Confidencial</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to top -->
+  <button class="scroll-top" id="scrollTop" aria-label="Volver arriba">↑</button>
+
+  <!-- Modal de detalle de brecha (fuera del corte) -->
+  <div class="modal-overlay" id="fueraModal" hidden>
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" aria-label="Cerrar">&times;</button>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- Modal del glosario operativo -->
+  <div class="modal-overlay" id="glosarioModal" hidden>
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="glosarioTitle">
+      <button class="modal-close" id="glosarioClose" aria-label="Cerrar">&times;</button>
+      <div class="modal-body">
+        <div class="modal-head">
+          <span class="modal-code">Glosario</span>
+          <span class="modal-country">Para leer las fichas</span>
+        </div>
+        <h3 id="glosarioTitle">Glosario operativo</h3>
+        <div class="glossary glossary-modal">
+          <div class="gl"><dt>Evento</dt><dd>Apartado de Alliance donde ingresan los reportes de los clientes; primer eslabón del servicio.</dd></div>
+          <div class="gl"><dt>Caso legal</dt><dd>Se genera a partir del evento cuando se asigna abogado; la asignación es el gatillo que lo crea.</dd></div>
+          <div class="gl"><dt>Beta / Legacy</dt><dd>Versión actual y versión anterior de Alliance; Colombia aún opera en Legacy.</dd></div>
+          <div class="gl"><dt>Discovery</dt><dd>Capa de dashboards y reportes de Alliance.</dd></div>
+          <div class="gl"><dt>Viewer</dt><dd>Buscador experto de Alliance, orientado a investigar sobre conjuntos de datos.</dd></div>
+          <div class="gl"><dt>Insights</dt><dd>Alertas configurables: se solicitan, BI las configura y quedan automáticas.</dd></div>
+          <div class="gl"><dt>Datalake</dt><dd>Repositorio corporativo de datos desde el cual se generan vistas y sábanas.</dd></div>
+          <div class="gl"><dt>Sábana</dt><dd>Exportación masiva de datos en planilla, usada como fuente para reportes y control.</dd></div>
+          <div class="gl"><dt>Guardia Legal</dt><dd>Equipo de abogados de México que atiende por teléfono los eventos y realiza su registro inicial.</dd></div>
+          <div class="gl"><dt>Proyecto Offender</dt><dd>Módulo de gestión de perfiles de infractores en desarrollo, con USA como piloto (Etapa 1).</dd></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de la taxonomía de transversalidad -->
+  <div class="modal-overlay" id="taxonomiaModal" hidden>
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="taxonomiaTitle">
+      <button class="modal-close" id="taxonomiaClose" aria-label="Cerrar">&times;</button>
+      <div class="modal-body">
+        <div class="modal-head">
+          <span class="modal-code">Taxonomía</span>
+          <span class="modal-country">Cómo se clasifica cada brecha</span>
+        </div>
+        <h3 id="taxonomiaTitle">Taxonomía: nivel de transversalidad de cada brecha</h3>
+        <div class="glossary glossary-modal tax-list">
+          <div class="gl"><dt><span class="tax-chip l1">Local</span></dt><dd>Levantada o validada por 1 solo país, sin evidencia concreta de aplicación en otros.<br><em class="tax-uso">Necesidad propia de un país.</em></dd></div>
+          <div class="gl"><dt><span class="tax-chip l2">Local / Revisar</span></dt><dd>Levantada por 1 solo país, pero con una señal concreta de que podría aplicar a otro.<br><em class="tax-uso">Nace local; podría pasar a multipaís.</em></dd></div>
+          <div class="gl"><dt><span class="tax-chip l3">Multipaís</span></dt><dd>Levantada o validada por 2 países, sin evidencia suficiente para subirla a LATAM o Transversal.<br><em class="tax-uso">Hay convergencia parcial.</em></dd></div>
+          <div class="gl"><dt><span class="tax-chip l4">Multipaís / Revisar</span></dt><dd>Levantada por 2 países, con señal concreta de que podría escalar a LATAM o Transversal.<br><em class="tax-uso">Revisar si se suma un tercer país.</em></dd></div>
+          <div class="gl"><dt><span class="tax-chip l5">LATAM</span></dt><dd>Levantada o validada por México + Colombia + Chile.<br><em class="tax-uso">Necesidad regional LATAM consolidada.</em></dd></div>
+          <div class="gl"><dt><span class="tax-chip l6">LATAM / Revisar</span></dt><dd>Validada por MX + CO + CL, con señal concreta de que podría aplicar también a USA o al grupo.<br><em class="tax-uso">Falta revisar si escala a grupo.</em></dd></div>
+          <div class="gl"><dt><span class="tax-chip l7">Transversal</span></dt><dd>Aplica a los 4 países o corresponde a una capacidad estructural de producto/grupo.<br><em class="tax-uso">Capacidad corporativa o de arquitectura.</em></dd></div>
+        </div>
+        <p class="tax-note">Esta taxonomía permite medir objetivamente la transversalidad y distinguir mínimos comunes de configuraciones locales.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="brechas.js"></script>
+  <script src="fuera.js"></script>
+  <script src="brechas_detail.js"></script>
+  <script src="fichas.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
