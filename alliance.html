@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alliance · Central de Operaciones Legales</title>
+  <meta name="description" content="Alliance como central de operaciones legales: cómo se construye de abajo hacia arriba, desde la base estructurada hasta el socio estratégico." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="v2.css" />
+</head>
+<body class="v2">
+
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a href="presentacion.html" class="brand" aria-label="ALTO">
+        <img class="brand-logo" src="assets/alto-logo.svg" alt="ALTO" />
+      </a>
+      <nav class="main-nav" id="mainNav">
+        <a href="presentacion.html#flujo" data-t="navFlujo">El flujo</a>
+        <a href="presentacion.html#macroproyectos" data-t="navMacro">Macroproyectos</a>
+        <a href="presentacion.html#agregar" data-t="navAgregar">Qué falta</a>
+        <a href="presentacion.html#pide" data-t="navPide">Qué se pide</a>
+        <a href="presentacion.html#gana" data-t="navGana">Qué se gana</a>
+      </nav>
+      <div class="nav-actions">
+        <div class="lang-toggle" id="langToggle"><button type="button" data-l="es">ES</button><button type="button" data-l="en">EN</button></div>
+        <a class="btn header-alliance active" href="alliance.html" aria-current="page">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="8.5" y="3" width="7" height="7"/></svg>
+          <span data-t="navAlliance">Alliance</span>
+        </a>
+        <a class="btn header-respaldo" href="index.html" title="Roadmap completo, con las 117 brechas">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          <span data-t="navRespaldo">Versión completa</span>
+        </a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="section al-hero" id="alliance">
+      <div class="container">
+        <div class="section-head" data-aos="fade-up">
+          <span class="kicker" data-i18n="al.kicker">Se construye de abajo hacia arriba</span>
+          <h2 data-i18n="al.h2">Alliance<br /><span class="al-h2-sub">Central de Operaciones Legales</span></h2>
+          <p class="lead" data-i18n="al.lead">Primero la base: evento, sujeto, causa y resultado. Con esas cuatro cajas resueltas se llega al patrón, y desde el patrón a la recomendación. Los macroproyectos transversales sostienen todo el edificio.</p>
+        </div>
+
+        <div class="al-map" id="allianceMap" data-aos="fade-up"></div>
+
+        <p class="al-cierre" id="alCierre" data-aos="fade-up"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img class="footer-logo" src="assets/alto-logo-white.svg" alt="ALTO" />
+        <p data-i18n="footer.brand">Roadmap Único de Desarrollo — Gestión Legal. Presentación ejecutiva para comité.</p>
+      </div>
+      <div class="footer-meta">
+        <a href="presentacion.html" class="footer-link" data-i18n="al.footerLink">Volver a la presentación</a>
+        <span>·</span>
+        <span data-i18n="footer.date">Septiembre 2026</span>
+        <span>·</span>
+        <span class="confidential-text" data-i18n="footer.conf">Uso Interno y Confidencial</span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="scroll-top" id="scrollTop" aria-label="Volver arriba">↑</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="datos_v2.js"></script>
+  <script src="v2.js"></script>
+</body>
+</html>

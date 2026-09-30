@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Presentación ejecutiva · Roadmap Gestión Legal ALTO</title>
+  <meta name="description" content="Presentación ejecutiva del Roadmap Único de Desarrollo, Gestión Legal ALTO. El flujo de la información a la decisión, los nueve macroproyectos, los proyectos por agregar y lo que se gana." />
+
+  <!-- Fonts: Raleway (ALTO brand font) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+
+  <!-- AOS scroll animations (same library ALTO uses) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+
+  <!-- styles.css aporta el sistema de diseño ALTO (tokens, header, hero,
+       secciones, footer). v2.css agrega solo los componentes nuevos. -->
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="v2.css" />
+</head>
+<body class="v2">
+
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a href="#hero" class="brand" aria-label="ALTO">
+        <img class="brand-logo" src="assets/alto-logo.svg" alt="ALTO" />
+      </a>
+      <nav class="main-nav" id="mainNav">
+        <a href="#flujo" data-t="navFlujo">El flujo</a>
+        <a href="#macroproyectos" data-t="navMacro">Macroproyectos</a>
+        <a href="#agregar" data-t="navAgregar">Qué falta</a>
+        <a href="#pide" data-t="navPide">Qué se pide</a>
+        <a href="#gana" data-t="navGana">Qué se gana</a>
+      </nav>
+      <div class="nav-actions">
+        <div class="lang-toggle" id="langToggle"><button type="button" data-l="es">ES</button><button type="button" data-l="en">EN</button></div>
+        <a class="btn header-alliance" href="alliance.html">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="8.5" y="3" width="7" height="7"/></svg>
+          <span data-t="navAlliance">Alliance</span>
+        </a>
+        <a class="btn header-respaldo" href="index.html" title="Roadmap completo, con las 117 brechas">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          <span data-t="navRespaldo">Versión completa</span>
+        </a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" id="hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <p class="eyebrow" data-aos="fade-down" data-i18n="hero.eyebrow">Presentación ejecutiva</p>
+        <h1 class="hero-title" data-aos="fade-up" data-i18n="hero.title">Roadmap Único<br />de Desarrollo</h1>
+        <p class="hero-legal" data-aos="fade-up" data-aos-delay="80" data-i18n="hero.legal"><span class="accent">Gestión Legal</span> ALTO</p>
+        <p class="hero-sub" data-aos="fade-up" data-aos-delay="140" data-i18n="hero.sub">De dónde nace la información, qué hay que construir para tenerla, y qué gana cada operación cuando la tiene.</p>
+
+        <div class="hero-flags" data-aos="fade-up" data-aos-delay="200">
+          <span class="flags-label" data-i18n="hero.flagsLabel">Una operación regional</span>
+          <div class="flags-row">
+            <span class="flag-chip"><img src="assets/flags/mx.png" alt="Mexico flag" /><span data-i18n="flag.mx">México</span></span>
+            <span class="flag-chip"><img src="assets/flags/co.png" alt="Colombia flag" /><span data-i18n="flag.co">Colombia</span></span>
+            <span class="flag-chip"><img src="assets/flags/cl.png" alt="Chile flag" /><span data-i18n="flag.cl">Chile</span></span>
+            <span class="flag-chip"><img src="assets/flags/us.png" alt="United States flag" /><span data-i18n="flag.us">Estados Unidos</span></span>
+            <span class="flag-chip"><img src="assets/flags/es.png" alt="Spain flag" /><span data-i18n="flag.es">España</span></span>
+          </div>
+        </div>
+
+        <div class="hero-tags" data-aos="fade-up" data-aos-delay="320">
+          <span class="hero-tag" data-i18n="hero.tagDate">Septiembre 2026</span>
+          <span class="hero-tag confidential" data-i18n="hero.tagConf">Uso Interno y Confidencial</span>
+        </div>
+        <div class="presenter" data-aos="fade-up" data-aos-delay="380">
+          <div class="presenter-avatar">
+            <img class="presenter-photo" src="assets/roberto.png" alt="Roberto Carrasco" onerror="this.style.display='none'" />
+            <span class="avatar-initial">R</span>
+          </div>
+          <div class="presenter-meta">
+            <span class="presenter-name" data-i18n="hero.presenterName">Sponsor del proyecto: Roberto Carrasco</span>
+            <span class="presenter-role" data-i18n="hero.presenterRole">CTO · ALTO</span>
+          </div>
+        </div>
+      </div>
+      <a href="#vision" class="scroll-hint" aria-label="Bajar"><span></span></a>
+    </section>
+
+    <!-- ===================== VISIÓN ===================== -->
+    <section class="ceo-section" id="vision">
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee-track" data-i18n="marquee">
+          <span>Plataforma única</span><i>•</i><span>Modelo común</span><i>•</i><span>Inteligencia operativa</span><i>•</i><span>Dato gobernado</span><i>•</i><span>Escalabilidad</span><i>•</i><span>Trazabilidad</span><i>•</i>
+          <span>Plataforma única</span><i>•</i><span>Modelo común</span><i>•</i><span>Inteligencia operativa</span><i>•</i><span>Dato gobernado</span><i>•</i><span>Escalabilidad</span><i>•</i><span>Trazabilidad</span><i>•</i>
+        </div>
+      </div>
+      <div class="container">
+        <div class="ceo-quote">
+          <span class="ceo-mark" aria-hidden="true">“</span>
+          <blockquote class="ceo-text" id="ceoText">La plataforma legal no puede ser solo un registro. Tiene que ser una plataforma de gestión legal: ahí está nuestro core, de ahí nace el dato y eso es lo que hace único a ALTO.</blockquote>
+          <div class="ceo-attr" data-aos="fade-up">
+            <div class="ceo-avatar">
+              <img class="ceo-photo" src="assets/jorge.png" alt="Jorge Nazer" onerror="this.style.display='none'" />
+              <span class="avatar-initial">J</span>
+            </div>
+            <div class="ceo-meta">
+              <span class="ceo-role" data-i18n="ceo.role">Jorge Nazer · Presidente ALTO</span>
+              <span class="ceo-date" data-i18n="ceo.date">Jueves 11 de Junio de 2026</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 1 · EL FLUJO (lámina 4) ===================== -->
+    <section class="section" id="flujo">
+      <div class="container">
+        <div class="section-head" data-aos="fade-up">
+          <span class="kicker" data-i18n="flujo.kicker">De la información a la decisión</span>
+          <h2 data-i18n="flujo.h2">El flujo, y dónde entra cada macroproyecto</h2>
+          <p class="lead" data-i18n="flujo.lead">La operación jurídica genera información. Cuando conectamos <strong>evento</strong>, <strong>sujeto</strong>, <strong>causa</strong> y <strong>resultado</strong> podemos reconocer recurrencias y patrones, y desde ahí nace una recomendación accionable. Pulsa una caja para ver qué macroproyectos la construyen.</p>
+        </div>
+
+        <div class="flow-nav" id="flowNav" data-aos="fade-up"></div>
+
+        <div class="objetivo-band" data-aos="fade-up">
+          <span class="objetivo-label" data-i18n="obj.label">El objetivo</span>
+          <p class="objetivo-text" data-i18n="obj.text">“Ser el socio confiable y estratégico de nuestros clientes, ayudándolos a prevenir y perseguir con inteligencia y análisis los delitos que más les importan, para construir juntos comunidades más seguras.”</p>
+          <p class="objetivo-note" data-i18n="obj.note">La cadena completa es la respuesta operativa a “con inteligencia y análisis”.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 2 · LOS NUEVE (lámina 1) ===================== -->
+    <section class="section section-alt" id="macroproyectos">
+      <div class="container">
+        <div class="section-head" data-aos="fade-up">
+          <span class="kicker" data-i18n="macro.kicker">De 117 brechas a una estructura</span>
+          <h2 data-i18n="macro.h2">Los nueve macroproyectos</h2>
+          <p class="lead" data-i18n="macro.lead">Las 117 brechas levantadas en México, Chile, Colombia y Estados Unidos no son 117 pedidos sueltos: son nueve dolores comunes. Pulsa cada tarjeta para ver de qué se trata.</p>
+        </div>
+        <div class="cards-grid" id="mpCards" data-aos="fade-up"></div>
+      </div>
+    </section>
+
+    <!-- ===================== 3 · QUÉ FALTA (lámina 9) ===================== -->
+    <section class="section" id="agregar">
+      <div class="container">
+        <div class="section-head" data-aos="fade-up">
+          <span class="kicker" data-i18n="agr.kicker">Lo que falta para un sistema único de gestión legal</span>
+          <h2 data-i18n="agr.h2">Los proyectos que hay que agregar</h2>
+          <p class="lead" data-i18n="agr.lead">Ninguno de los doce repite una línea de trabajo de los nueve macroproyectos: les dan profundidad. Cinco tienen brechas levantadas que los respaldan; los otros siete son el complemento que faltaba.</p>
+        </div>
+        <div class="agr-filtros" id="agrFiltros" data-aos="fade-up"></div>
+        <div class="agr-grid" id="agrGrid" data-aos="fade-up"></div>
+        <p class="agr-nota" data-aos="fade-up" data-i18n="agr.nota">Criterios que los cruzan: dos experiencias de uso, litigante y coordinador de cartera · núcleo universal con paquete local por país.</p>
+      </div>
+    </section>
+
+    <!-- ===================== 4 · QUÉ SE PIDE (lámina 11) ===================== -->
+    <section class="section section-dark" id="pide">
+      <div class="container">
+        <div class="section-head section-head-light" data-aos="fade-up">
+          <span class="kicker" data-i18n="pide.kicker">Qué esperan resolver las 117 brechas</span>
+          <h2 data-i18n="pide.h2">Lo que pide el levantamiento</h2>
+        </div>
+
+        <div class="titular" data-aos="zoom-in">
+          <span class="titular-num">76<i>%</i></span>
+          <p class="titular-text" data-i18n="pide.titular">de las brechas pide lo mismo: <strong>dejar de hacerlo a mano</strong>. Tiempo y trabajo manual es el beneficio que más se repite en los tres bloques del roadmap. No es una petición jurídica: es capacidad.</p>
+        </div>
+
+        <div class="matriz" id="matriz" data-aos="fade-up"></div>
+
+        <p class="matriz-pie" data-aos="fade-up" data-i18n="pide.pie">Base: las 110 brechas que tienen macroproyecto asignado. Los porcentajes <strong>no suman 100</strong> porque una misma brecha puede declarar más de un beneficio; ocho brechas cuentan en dos bloques. Lo que se mide es <strong>cuántas brechas mencionan cada beneficio</strong>, no cuánto se ahorra.</p>
+      </div>
+    </section>
+
+    <!-- ===================== 5 · QUÉ SE GANA (lámina 12) ===================== -->
+    <section class="section" id="gana">
+      <div class="container">
+        <div class="section-head" data-aos="fade-up">
+          <span class="kicker" data-i18n="gana.kicker">Qué se gana, qué hay que hacer, cuál es el resultado</span>
+          <h2 data-i18n="gana.h2">Qué gana cada operación</h2>
+          <p class="lead" data-i18n="gana.lead">Las ganancias no son invento: salen de lo que los equipos declararon en el levantamiento. Las métricas del pie son <strong>propuesta, no compromiso</strong>: ninguna está medida hoy.</p>
+        </div>
+        <div class="gana-grid" id="ganaGrid" data-aos="fade-up"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img class="footer-logo" src="assets/alto-logo-white.svg" alt="ALTO" />
+        <p data-i18n="footer.brand">Roadmap Único de Desarrollo — Gestión Legal. Presentación ejecutiva para comité.</p>
+      </div>
+      <div class="footer-meta">
+        <a href="index.html" class="footer-link" data-i18n="footer.link">Versión completa del roadmap</a>
+        <span>·</span>
+        <span data-i18n="footer.date">Septiembre 2026</span>
+        <span>·</span>
+        <span class="confidential-text" data-i18n="footer.conf">Uso Interno y Confidencial</span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="scroll-top" id="scrollTop" aria-label="Volver arriba">↑</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="datos_v2.js"></script>
+  <script src="v2.js"></script>
+</body>
+</html>
