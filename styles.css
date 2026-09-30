@@ -68,7 +68,9 @@ h3 { font-size: 1.4rem; font-weight: 600; }
 }
 .header-inner {
   display: flex; align-items: center; gap: 14px;
-  max-width: var(--maxw); margin: 0 auto;
+  /* La barra flotante puede ser algo más ancha que el contenido: con el acceso
+     a la presentación ejecutiva, a 1180px el logo se aplastaba hasta desaparecer. */
+  max-width: 1440px; margin: 0 auto;
   background: rgba(255, 255, 255, 0.72);
   -webkit-backdrop-filter: blur(18px) saturate(150%); backdrop-filter: blur(18px) saturate(150%);
   border: 1px solid rgba(255, 255, 255, 0.65);
@@ -82,7 +84,7 @@ h3 { font-size: 1.4rem; font-weight: 600; }
   border-color: rgba(26, 51, 80, 0.06);
   box-shadow: 0 12px 34px rgba(26, 51, 80, 0.15);
 }
-.brand { margin-right: 4px; }
+.brand { flex-shrink: 0; margin-right: 4px; }
 
 .brand-mark {
   font-weight: 800; font-size: 1.6rem; letter-spacing: 0.04em; color: var(--text);
@@ -120,6 +122,22 @@ h3 { font-size: 1.4rem; font-weight: 600; }
 .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .nav-toggle.open span:nth-child(2) { opacity: 0; }
 .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Acceso a la presentación ejecutiva (v2). Destacado, porque es la vista
+   con la que se presenta al comité; esta página queda como respaldo. */
+.header-v2 {
+  padding: 6px 13px; font-size: 0.82rem; font-weight: 700; gap: 6px;
+  border-radius: 9px; border: 1px solid var(--secondary);
+  background: var(--secondary); color: var(--white); text-decoration: none;
+  white-space: nowrap;
+}
+.header-v2 svg { width: 15px; height: 15px; flex-shrink: 0; }
+.header-v2:hover { background: #d43536; border-color: #d43536; color: var(--white); transform: none; box-shadow: 0 6px 18px rgba(231, 66, 67, 0.3); }
+/* La barra no da para tres botones con texto. Glosario y Taxonomía quedan como
+   icono con tooltip —el mismo trato que ya recibían en pantallas chicas— para
+   que el acceso a la presentación ejecutiva conserve su etiqueta. */
+.header-glosario span, .header-tax span { display: none; }
+.header-glosario, .header-tax { padding: 8px; }
 
 /* Navbar responsive: tools → icon-only, then collapse to hamburger */
 @media (max-width: 1200px) {

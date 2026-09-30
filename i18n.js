@@ -15,6 +15,7 @@ window.I18N = (function () {
     'nav.macro': 'Macroprojects',
     'nav.estrategia': 'Strategic Reading',
     'nav.pasos': 'Next Steps',
+    'btn.v2': 'Executive presentation',
     'btn.glosario': 'Glossary',
     'btn.taxonomia': 'Taxonomy',
 
