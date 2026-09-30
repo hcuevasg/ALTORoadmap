@@ -312,8 +312,8 @@ window.V2 = (function () {
     bandaTrans: { es: 'Lo transversal · atraviesa las seis cajas', en: 'Cross-cutting · runs through all six boxes' },
 
     // Tarjetas
-    tocaParaVer: { es: 'Tocar para ver', en: 'Tap to reveal' },
-    volver:      { es: 'Volver', en: 'Back' },
+    anterior:    { es: 'Macroproyecto anterior', en: 'Previous macroproject' },
+    siguiente:   { es: 'Macroproyecto siguiente', en: 'Next macroproject' },
     pendiente:   { es: 'Texto en preparación', en: 'Text in preparation' },
     pendienteD:  { es: 'La explicación de este macroproyecto está siendo redactada y se incorpora apenas esté lista.', en: 'The explanation for this macroproject is being written and will be added as soon as it is ready.' },
     enElFlujo:   { es: 'En el flujo', en: 'In the flow' },

@@ -40,7 +40,7 @@
 
     'macro.kicker': 'From 117 gaps to a structure',
     'macro.h2': 'The nine macroprojects',
-    'macro.lead': 'The 117 gaps raised in Mexico, Chile, Colombia and the United States are not 117 separate requests: they are nine shared pains. Click each card to see what it is about.',
+    'macro.lead': 'The 117 gaps raised in Mexico, Chile, Colombia and the United States are not 117 separate requests: they are nine shared pains. Move through them one at a time: with the arrows, the numbered rail or the ← → keys.',
 
     'agr.kicker': 'What is missing for a single legal management system',
     'agr.h2': 'The projects to be added',
@@ -100,11 +100,12 @@
   let activeZ = null;
 
   function irAMP(n) {
-    const card = document.querySelector('.mpcard[data-mp="' + n + '"]');
-    if (!card) return;
-    document.querySelectorAll('.mpcard.flip').forEach((c) => { if (c !== card) flipCard(c, false); });
-    flipCard(card, true);
-    const top = card.getBoundingClientRect().top + window.scrollY - 110;
+    if (!slides.length) return;
+    const idx = D.MP.findIndex((m) => m.n === n);
+    if (idx < 0) return;
+    verSlide(idx);
+    const host = $('#mpSlider');
+    const top = host.getBoundingClientRect().top + window.scrollY - 110;
     window.scrollTo({ top: Math.max(0, top), behavior: reduced ? 'auto' : 'smooth' });
   }
 
@@ -146,9 +147,9 @@
       panel.appendChild(el('p', 'fn-panel-note', t(z.nota)));
     }
 
-    // atenuar las tarjetas que no pertenecen a la zona elegida
+    // atenuar en el riel los macroproyectos que no pertenecen a la zona elegida
     const sel = activeZ == null ? null : D.ZONAS[activeZ].mps;
-    document.querySelectorAll('.mpcard').forEach((c) => {
+    document.querySelectorAll('.mps-dot').forEach((c) => {
       c.classList.toggle('dim', sel != null && sel.indexOf(Number(c.dataset.mp)) === -1);
     });
   }
@@ -197,86 +198,181 @@
   }
 
   // ============================================================
-  //  2 · Los nueve macroproyectos — tarjetas que se dan vuelta
+  //  2 · Los nueve macroproyectos — presentador de uno en uno
   //
-  //  El dorso muestra `mp.explica`. Mientras ese campo esté vacío en
-  //  datos_v2.js, la tarjeta muestra el aviso de texto pendiente: es
+  //  Un macroproyecto por pantalla, con capas superpuestas: la forma
+  //  de color al fondo, el número gigante que se sale del marco y la
+  //  tarjeta con el texto. Se avanza con las flechas, con el riel
+  //  numerado, con las teclas ← → o arrastrando en pantalla táctil.
+  //
+  //  El cuerpo de cada uno es `mp.explica`. Mientras ese campo esté
+  //  vacío en datos_v2.js se muestra el aviso de texto pendiente: es
   //  el hueco reservado para la redacción de Constanza.
   // ============================================================
-  function flipCard(card, on) {
-    card.classList.toggle('flip', on);
-    const btn = card.querySelector('.mpcard-face.front');
-    if (btn) btn.setAttribute('aria-expanded', on ? 'true' : 'false');
+  let slides = [];
+  let dots = [];
+  let actual = 0;
+
+  function verSlide(i, dir) {
+    if (!slides.length) return;
+    const n = D.MP.length;
+    const destino = ((i % n) + n) % n;
+    if (dir == null) dir = destino > actual ? 1 : (destino < actual ? -1 : 0);
+
+    slides.forEach((s, k) => {
+      const on = k === destino;
+      s.classList.remove('entra-der', 'entra-izq');
+      s.classList.toggle('is-active', on);
+      s.setAttribute('aria-hidden', on ? 'false' : 'true');
+    });
+    dots.forEach((d, k) => {
+      d.classList.toggle('active', k === destino);
+      d.setAttribute('aria-selected', k === destino ? 'true' : 'false');
+      d.tabIndex = k === destino ? 0 : -1;
+    });
+
+    if (dir !== 0 && !reduced) {
+      const s = slides[destino];
+      void s.offsetWidth; // reinicia la animación aunque se repita la dirección
+      s.classList.add(dir > 0 ? 'entra-der' : 'entra-izq');
+    }
+    actual = destino;
   }
 
-  function renderTarjetas() {
-    const host = $('#mpCards');
+  function renderSlider() {
+    const host = $('#mpSlider');
     if (!host) return;
+    const previo = actual;
     host.textContent = '';
+    slides = [];
+    dots = [];
+
+    const stage = el('div', 'mps-stage');
 
     D.MP.forEach((mp) => {
-      const card = el('div', 'mpcard z-' + mp.zona);
-      card.dataset.mp = mp.n;
-      const inner = el('div', 'mpcard-inner');
+      const s = el('article', 'mps-slide z-' + mp.zona);
+      s.dataset.mp = mp.n;
+      s.setAttribute('aria-hidden', 'true');
 
-      // --- cara frontal ---
-      const front = el('button', 'mpcard-face front');
-      front.type = 'button';
-      front.setAttribute('aria-expanded', 'false');
-      front.appendChild(el('span', 'mpcard-num', String(mp.n)));
-      front.appendChild(el('h3', 'mpcard-title', t(mp.title)));
-      const meta = el('div', 'mpcard-meta');
-      meta.appendChild(el('span', 'mpcard-zona', U('zona_' + mp.zona)));
-      meta.appendChild(el('span', 'mpcard-brechas', mp.entradas + ' ' + U('brechas')));
-      front.appendChild(meta);
-      front.appendChild(el('span', 'mpcard-cue', U('tocaParaVer')));
-      front.addEventListener('click', () => {
-        const abrir = !card.classList.contains('flip');
-        document.querySelectorAll('.mpcard.flip').forEach((c) => flipCard(c, false));
-        flipCard(card, abrir);
-      });
-      inner.appendChild(front);
+      s.appendChild(el('div', 'mps-shape'));
+      const ghost = el('span', 'mps-ghost', String(mp.n).padStart(2, '0'));
+      ghost.setAttribute('aria-hidden', 'true');
+      s.appendChild(ghost);
 
-      // --- cara trasera ---
-      const back = el('div', 'mpcard-face back');
-      back.appendChild(el('span', 'mpcard-back-id', 'MP' + mp.n));
+      const card = el('div', 'mps-card');
+      const eyebrow = el('div', 'mps-eyebrow');
+      eyebrow.appendChild(el('span', 'mps-eyebrow-id', 'MP' + mp.n));
+      eyebrow.appendChild(el('span', 'mps-eyebrow-zona', U('zona_' + mp.zona)));
+      card.appendChild(eyebrow);
+      card.appendChild(el('h3', 'mps-title', t(mp.title)));
 
       const texto = t(mp.explica);
       if (texto) {
-        back.appendChild(el('p', 'mpcard-explica', texto));
+        card.appendChild(el('p', 'mps-explica', texto));
       } else {
-        const pend = el('div', 'mpcard-pendiente');
-        pend.appendChild(el('span', 'mpcard-pend-badge', U('pendiente')));
-        pend.appendChild(el('p', 'mpcard-pend-text', U('pendienteD')));
-        back.appendChild(pend);
+        const pend = el('div', 'mps-pendiente');
+        pend.appendChild(el('span', 'mps-pend-badge', U('pendiente')));
+        pend.appendChild(el('p', 'mps-pend-text', U('pendienteD')));
+        card.appendChild(pend);
       }
 
-      const rol = el('p', 'mpcard-rol');
-      rol.appendChild(el('span', 'mpcard-rol-label', U('enElFlujo')));
+      const rol = el('p', 'mps-rol');
+      rol.appendChild(el('span', 'mps-rol-label', U('enElFlujo')));
       rol.appendChild(document.createTextNode(t(mp.rol)));
-      back.appendChild(rol);
+      card.appendChild(rol);
 
       const agr = D.AGREGADOS.filter((a) => a.mp === mp.n);
       if (agr.length) {
-        const wrap = el('div', 'mpcard-agr');
-        wrap.appendChild(el('span', 'mpcard-agr-label', U('seConcreta')));
-        const list = el('div', 'mpcard-agr-list');
-        agr.forEach((a) => list.appendChild(el('span', 'mpcard-agr-chip', t(a.t))));
+        const wrap = el('div', 'mps-agr');
+        wrap.appendChild(el('span', 'mps-agr-label', U('seConcreta')));
+        const list = el('div', 'mps-agr-list');
+        agr.forEach((a) => list.appendChild(el('span', 'mps-agr-chip', t(a.t))));
         wrap.appendChild(list);
-        back.appendChild(wrap);
+        card.appendChild(wrap);
       }
 
-      const volver = el('button', 'mpcard-volver', U('volver'));
-      volver.type = 'button';
-      volver.addEventListener('click', (e) => { e.stopPropagation(); flipCard(card, false); });
-      back.appendChild(volver);
+      const stats = el('div', 'mps-stats');
+      stats.appendChild(el('span', null, mp.entradas + ' ' + U('brechas')));
+      stats.appendChild(el('span', null, mp.pct + ' ' + U('delTotal')));
+      card.appendChild(stats);
 
-      inner.appendChild(back);
-      card.appendChild(inner);
-      host.appendChild(card);
+      s.appendChild(card);
+      stage.appendChild(s);
+      slides.push(s);
     });
 
+    const prev = el('button', 'mps-nav prev');
+    prev.type = 'button';
+    prev.setAttribute('aria-label', U('anterior'));
+    prev.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>';
+    prev.addEventListener('click', () => verSlide(actual - 1, -1));
+
+    const next = el('button', 'mps-nav next');
+    next.type = 'button';
+    next.setAttribute('aria-label', U('siguiente'));
+    next.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>';
+    next.addEventListener('click', () => verSlide(actual + 1, 1));
+
+    stage.appendChild(prev);
+    stage.appendChild(next);
+    host.appendChild(stage);
+
+    // riel numerado: sigue permitiendo ver los nueve de un vistazo y saltar
+    const riel = el('div', 'mps-rail');
+    riel.setAttribute('role', 'tablist');
+    riel.setAttribute('aria-label', U('navMacro'));
+    D.MP.forEach((mp, k) => {
+      const d = el('button', 'mps-dot z-' + mp.zona);
+      d.type = 'button';
+      d.dataset.mp = mp.n;
+      d.setAttribute('role', 'tab');
+      d.setAttribute('aria-selected', 'false');
+      d.title = 'MP' + mp.n + ' · ' + t(mp.corto);
+      d.appendChild(el('span', 'mps-dot-n', String(mp.n)));
+      d.appendChild(el('span', 'mps-dot-t', t(mp.corto)));
+      d.addEventListener('click', () => verSlide(k));
+      riel.appendChild(d);
+      dots.push(d);
+    });
+    host.appendChild(riel);
+
+    // teclado: flechas dentro del riel
+    riel.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { e.preventDefault(); verSlide(actual + 1, 1); dots[actual].focus(); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); verSlide(actual - 1, -1); dots[actual].focus(); }
+    });
+
+    // arrastre en pantalla táctil
+    let x0 = null;
+    stage.addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+    stage.addEventListener('touchend', (e) => {
+      if (x0 == null) return;
+      const dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 45) verSlide(actual + (dx < 0 ? 1 : -1), dx < 0 ? 1 : -1);
+      x0 = null;
+    });
+
+    verSlide(previo, 0);
     pintarZona();
+    ajustarAlto();
+  }
+
+  // Las láminas van superpuestas en absoluto, así que el escenario necesita
+  // el alto de la más larga; si no, se corta o deja un hueco. Se recalcula al
+  // cambiar de idioma y al redimensionar.
+  function ajustarAlto() {
+    const stage = document.querySelector('.mps-stage');
+    if (!stage || !slides.length) return;
+    if (window.matchMedia('(max-width: 900px)').matches) { stage.style.minHeight = ''; return; }
+    stage.style.minHeight = '0px';
+    let alto = 0;
+    slides.forEach((s) => {
+      const visible = s.classList.contains('is-active');
+      if (!visible) { s.style.visibility = 'hidden'; s.style.display = 'grid'; s.style.opacity = '0'; }
+      alto = Math.max(alto, s.querySelector('.mps-card').offsetHeight);
+      if (!visible) { s.style.visibility = ''; s.style.display = ''; s.style.opacity = ''; }
+    });
+    stage.style.minHeight = Math.max(420, Math.round(alto / 0.82)) + 'px';
   }
 
   // ============================================================
@@ -539,7 +635,7 @@
   function renderTodo() {
     aplicarEstatico();
     renderFlujo();
-    renderTarjetas();
+    renderSlider();
     renderAgregados();
     renderMatriz();
     renderGana();
@@ -569,6 +665,7 @@
     if (scrollTopBtn) scrollTopBtn.classList.toggle('show', y > 600);
   }
   window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', () => ajustarAlto());
 
   scrollTopBtn?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' }));
 
@@ -592,9 +689,16 @@
   }, { rootMargin: '-45% 0px -50% 0px' });
   document.querySelectorAll('main section[id]').forEach((s) => spy.observe(s));
 
-  // Escape cierra cualquier tarjeta dada vuelta
+  // Flechas del teclado para recorrer los nueve macroproyectos cuando la
+  // sección está a la vista y el foco no está en un campo de texto.
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') document.querySelectorAll('.mpcard.flip').forEach((c) => flipCard(c, false));
+    if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+    const host = $('#mpSlider');
+    if (!host || /^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)) return;
+    const r = host.getBoundingClientRect();
+    if (r.bottom < 120 || r.top > window.innerHeight - 120) return;
+    e.preventDefault();
+    verSlide(actual + (e.key === 'ArrowRight' ? 1 : -1), e.key === 'ArrowRight' ? 1 : -1);
   });
 
   // ============================================================
