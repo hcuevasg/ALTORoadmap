@@ -123,6 +123,10 @@
       panel.appendChild(el('p', 'fn-hint', U('fnHint')));
     } else {
       const z = D.ZONAS[activeZ];
+      // El detalle va dentro de una tarjeta abisagrada que gira al abrirse.
+      const persp = el('div', 'fn-persp');
+      const card = el('div', 'fn-card');
+
       const head = el('div', 'fn-panel-head');
       head.appendChild(el('span', 'fn-panel-arco', t(z.arco)));
       head.appendChild(el('h3', 'fn-panel-t', t(z.t)));
@@ -130,21 +134,32 @@
       reset.type = 'button';
       reset.addEventListener('click', () => selZona(null));
       head.appendChild(reset);
-      panel.appendChild(head);
+      card.appendChild(head);
 
+      const body = el('div', 'fn-card-body');
       const grid = el('div', 'fn-mps');
-      z.mps.forEach((n) => {
+      z.mps.forEach((n, i) => {
         const mp = D.MP.find((m) => m.n === n);
         const chip = el('button', 'fn-mp');
         chip.type = 'button';
+        chip.style.setProperty('--d', (140 + i * 70) + 'ms');
         chip.appendChild(el('span', 'fn-mp-id', 'MP' + n));
         chip.appendChild(el('span', 'fn-mp-name', t(mp.corto)));
         chip.appendChild(el('span', 'fn-mp-rol', t(mp.rol)));
         chip.addEventListener('click', () => irAMP(n));
         grid.appendChild(chip);
       });
-      panel.appendChild(grid);
-      panel.appendChild(el('p', 'fn-panel-note', t(z.nota)));
+      body.appendChild(grid);
+      body.appendChild(el('p', 'fn-panel-note', t(z.nota)));
+      card.appendChild(body);
+
+      persp.appendChild(card);
+      panel.appendChild(persp);
+
+      // Arranca cerrada y se abre en el siguiente frame, para que la
+      // transición corra también cuando se pasa de una zona a otra.
+      void card.offsetWidth;
+      card.classList.add('abierto');
     }
 
     // atenuar en el riel los macroproyectos que no pertenecen a la zona elegida

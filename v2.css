@@ -42,19 +42,36 @@
   background: var(--bg); border: 1.5px solid rgba(26,51,80,0.10); border-radius: 12px; padding: 12px 11px;
   transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.2s ease, border-color 0.2s ease;
 }
+/* El conector entre nodos: la fila de cajas se lee como una línea de tiempo
+   y no como seis cajas sueltas. Se tiñe cuando une dos cajas de la zona
+   elegida; si el navegador no soporta :has(), simplemente queda gris. */
 .fn-caja:not(:last-child)::after {
-  content: '→'; position: absolute; right: -16px; top: 50%; transform: translateY(-50%);
-  color: rgba(26,51,80,0.28); font-weight: 800; font-size: 0.9rem; pointer-events: none;
+  content: ''; position: absolute; right: -22px; top: 27px; width: 22px; height: 2px;
+  background: rgba(26,51,80,0.16); pointer-events: none; transition: background 0.3s ease;
 }
+.fn-caja.active:has(+ .fn-caja.active)::after { background: var(--primary); }
+.fn-caja.z-patron.active:has(+ .fn-caja.active)::after,
+.fn-caja.z-reco.active:has(+ .fn-caja.active)::after { background: var(--secondary); }
 .fn-caja:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); border-color: var(--primary); }
 .fn-caja:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
-.fn-caja-n { font-size: 0.64rem; font-weight: 800; color: var(--text-secondary); letter-spacing: 0.06em; }
+.fn-caja { padding-top: 14px; }
+.fn-caja-n {
+  display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%;
+  font-size: 0.72rem; font-weight: 800; color: var(--text-secondary);
+  background: var(--white); border: 2px solid rgba(26,51,80,0.16);
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+.fn-caja:hover .fn-caja-n { border-color: var(--primary); color: var(--primary); }
+.fn-caja.active .fn-caja-n { background: var(--white); border-color: var(--white); color: var(--primary); }
+.fn-caja.z-patron.active .fn-caja-n, .fn-caja.z-reco.active .fn-caja-n { color: var(--secondary); }
 .fn-caja-t { font-size: 0.92rem; font-weight: 800; color: var(--text); line-height: 1.15; }
 .fn-caja-s { font-size: 0.74rem; color: var(--text-secondary); line-height: 1.3; }
 .fn-caja.z-patron, .fn-caja.z-reco { border-color: rgba(231,66,67,0.22); }
 .fn-caja.z-patron:hover, .fn-caja.z-reco:hover { border-color: var(--secondary); }
 .fn-caja.active { background: var(--primary); border-color: var(--primary); }
-.fn-caja.active .fn-caja-n, .fn-caja.active .fn-caja-t, .fn-caja.active .fn-caja-s { color: var(--white); }
+/* El nodo conserva su propio color: sobre el círculo blanco el número va en
+   el color de la zona, no en blanco. */
+.fn-caja.active .fn-caja-t, .fn-caja.active .fn-caja-s { color: var(--white); }
 .fn-caja.z-patron.active, .fn-caja.z-reco.active { background: var(--secondary); border-color: var(--secondary); }
 
 .fn-band {
@@ -74,6 +91,20 @@
 
 .fn-panel { margin-top: 18px; border-top: 1px solid rgba(26,51,80,0.10); padding-top: 18px; }
 .fn-hint { margin: 0; text-align: center; font-size: 0.9rem; color: var(--text-secondary); }
+
+/* El detalle de la zona se abre como una puerta abisagrada en su borde
+   izquierdo: gira desde 9° hasta quedar plano, con un easing que pasa un
+   pelo de largo y vuelve. El cuerpo se despliega a la vez. */
+.fn-persp { perspective: 1100px; }
+.fn-card {
+  transform-origin: 0 50%; transform-style: preserve-3d;
+  transform: rotateY(9deg); opacity: 0;
+  transition: transform 0.75s cubic-bezier(0.59, 1.45, 0.69, 0.98) 0.05s, opacity 0.3s linear;
+}
+.fn-card.abierto { transform: rotateY(0deg); opacity: 1; }
+.fn-card-body { max-height: 0; overflow: hidden; transition: max-height 0.55s ease-in-out; }
+.fn-card.abierto .fn-card-body { max-height: 420px; }
+
 .fn-panel-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
 .fn-panel-arco { font-size: 0.66rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--secondary); }
 .fn-panel-t { margin: 0; font-size: 1.15rem; color: var(--text); }
@@ -81,6 +112,8 @@
 .fn-reset:hover { background: var(--primary); color: var(--white); }
 .fn-mps { display: grid; grid-template-columns: repeat(auto-fit, minmax(235px, 1fr)); gap: 10px; }
 .fn-mp { display: flex; flex-direction: column; gap: 4px; text-align: left; font-family: var(--font); cursor: pointer; background: var(--white); border: 1px solid rgba(64,115,184,0.22); border-radius: 12px; padding: 12px 14px; transition: transform 0.16s ease, box-shadow 0.18s ease, border-color 0.2s ease; }
+@keyframes fnMpEntra { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.fn-card.abierto .fn-mp { animation: fnMpEntra 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) both; animation-delay: var(--d, 0ms); }
 .fn-mp:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); border-color: var(--primary); }
 .fn-mp:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
 .fn-mp-id { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.05em; color: var(--secondary); }
@@ -317,7 +350,8 @@
 @media (max-width: 1060px) {
   .fn-arcs { grid-template-columns: 1fr 1fr; gap: 14px; }
   .fn-cajas { grid-template-columns: repeat(3, 1fr); gap: 20px 22px; }
-  .fn-caja:nth-child(3)::after { display: none; }
+  /* a tres columnas, el conector no debe saltar de fila */
+  .fn-caja:nth-child(3)::after, .fn-caja:nth-child(6)::after { display: none; }
 }
 @media (max-width: 860px) {
   /* La matriz deja de ser tabla y pasa a ser una lista por bloque */
@@ -361,6 +395,9 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .fn-card { transition: none; transform: none; opacity: 1; }
+  .fn-card-body { max-height: none; }
+  .fn-card.abierto .fn-mp { animation: none; }
   .mps-slide.entra-der, .mps-slide.entra-izq,
   .mps-slide.entra-der .mps-ghost, .mps-slide.entra-izq .mps-ghost { animation: none; }
   .fn-caja, .fn-mp, .mps-dot, .mps-nav { transition: none; }
