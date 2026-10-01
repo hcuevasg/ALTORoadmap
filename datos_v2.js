@@ -69,77 +69,231 @@ window.V2 = (function () {
 
   // ---- Los nueve macroproyectos (lámina 1) ----
   //
-  //  *** `explica` ESTÁ VACÍO A PROPÓSITO ***
-  //  Es el dorso de cada tarjeta: la explicación nivel A1 que está redactando
-  //  Constanza. Cuando llegue su borrador, se pega aquí y la tarjeta se llena
-  //  sola — no hay que tocar ni el HTML ni el CSS ni el JS.
-  //  Mientras esté vacío, la tarjeta muestra el aviso de "texto pendiente".
+  //  El contenido en español de MP1 a MP5 lo redactó Constanza (30/09/2026):
+  //  `titulo` y `gancho` son el frente de su tarjeta; `queNosPasa`, `laClave`,
+  //  `ganamos` y `comoAcerca` son el reverso. El inglés es traducción propia y
+  //  conviene que ella lo revise.
+  //
+  //  MP6 a MP9 siguen sin texto: mientras `titulo` esté vacío, la tarjeta
+  //  muestra el aviso de "texto en preparación" y nada más hay que tocar.
+  //
+  //  `icono` elige el dibujo en el que se transforma el número al pasar por
+  //  encima (ver ICONOS más abajo). `esencia` es el rótulo bajo el número.
   //
   const MP = [
     {
-      n: 1, zona: 'trans', pct: '14,9%', entradas: 18,
+      n: 1, zona: 'trans', pct: '14,9%', entradas: 18, icono: 'escudo',
       title: { es: 'Gobierno, calidad y estandarización del dato', en: 'Data Governance, Quality and Standardization' },
       corto: { es: 'Gobierno y calidad del dato', en: 'Data governance & quality' },
       rol: { es: 'Sin esto, ninguna de las seis cajas del flujo se sostiene.', en: 'Without this, none of the six boxes in the flow holds up.' },
-      explica: { es: '', en: '' },
+      esencia: { es: 'Información confiable', en: 'Reliable information' },
+      titulo: { es: 'Información en la que podamos confiar', en: 'Information we can trust' },
+      gancho: { es: 'Si la información no es confiable, nada de lo que construyamos encima lo será.', en: 'If the information is not reliable, nothing we build on top of it will be.' },
+      frecuencia: { es: '1 de cada 7 problemas', en: '1 in every 7 problems' },
+      paises: { es: 'México, Chile, Colombia', en: 'Mexico, Chile, Colombia' },
+      queNosPasa: {
+        es: 'La información está incompleta, mal escrita, atrasada, sin reglas comunes y sin responsable. Cuando el sistema no tiene dónde registrar algo, o es lento, cada equipo arma su propia versión en archivos, chats y correos aparte, y la información se divide todavía más. Una misma persona aparece varias veces y un mismo caso dice cosas distintas según dónde se mire. Es tan grave que ni siquiera podemos ver quién vuelve a delinquir.',
+        en: 'The information is incomplete, badly written, out of date, without common rules and without an owner. When the system has nowhere to record something, or is slow, each team builds its own version in separate files, chats and emails, and the information fragments further. The same person appears several times and the same case says different things depending on where you look. It is so serious that we cannot even see who is reoffending.',
+      },
+      laClave: {
+        es: 'Está en la causa, es decir, en los registros de la fiscalía y el tribunal. Desde ahí se completan el evento, el sujeto y el resultado.',
+        en: 'It is in the case — that is, in the records of the prosecutor’s office and the court. From there the event, the subject and the outcome are completed.',
+      },
+      ganamos: [
+        { t: { es: 'Decisiones bien tomadas', en: 'Well-made decisions' }, d: { es: 'El cliente y la gerencia deciden con nuestros números. Si el número está malo, la decisión también.', en: 'The client and management decide using our numbers. If the number is wrong, so is the decision.' } },
+        { t: { es: 'Credibilidad', en: 'Credibility' }, d: { es: 'Lo que le informamos al cliente es lo mismo que consta en la justicia. Nuestras cifras resisten cualquier revisión.', en: 'What we report to the client is the same as what the courts hold on record. Our figures withstand any review.' } },
+        { t: { es: 'Análisis de verdad', en: 'Real analysis' }, d: { es: 'La estrategia nos pide trabajar “con inteligencia y análisis”. No hay análisis posible sobre información incorrecta.', en: 'The strategy asks us to work “with intelligence and analysis”. No analysis is possible on incorrect information.' } },
+      ],
+      comoAcerca: {
+        es: 'Es la base de los otros ocho proyectos y el camino para ser “el socio confiable y estratégico de nuestros clientes”.',
+        en: 'It is the base of the other eight projects and the path to being “our clients’ trusted, strategic partner”.',
+      },
+      detalle: { label: { es: '18 de 121 · 14,9%', en: '18 of 121 · 14.9%' },
+        ids: ['MX-005','MX-015','MX-001','MX-042','MX-026','MX-049','CL-017','CL-019','CL-020','CL-022','CL-023','CL-024','CO-005','CO-009','CO-012','CO-013','CO-014'] },
     },
     {
-      n: 2, zona: 'reco', pct: '15,7%', entradas: 19,
+      n: 2, zona: 'reco', pct: '15,7%', entradas: 19, icono: 'tablero',
       title: { es: 'Reportería, dashboards y autoservicio', en: 'Reporting, Dashboards and Self-Service' },
       corto: { es: 'Reportería y autoservicio', en: 'Reporting & self-service' },
       rol: { es: 'Entrega la recomendación en forma utilizable para decidir.', en: 'Delivers the recommendation in a form usable for deciding.' },
-      explica: { es: '', en: '' },
+      esencia: { es: 'Vista por cliente', en: 'A view per client' },
+      titulo: { es: 'Cada cliente ve lo que le importa', en: 'Each client sees what matters to them' },
+      gancho: { es: 'Una misma base de información. A cada cliente, la parte que necesita.', en: 'One single base of information. To each client, the part they need.' },
+      frecuencia: { es: '1 de cada 6 problemas', en: '1 in every 6 problems' },
+      paises: { es: 'México, Chile, Colombia', en: 'Mexico, Chile, Colombia' },
+      queNosPasa: {
+        es: 'Cada informe al cliente se arma a mano. Se junta información de varias planillas, archivos y sistemas, se copia a una presentación y se envía por correo. Cada pedido urgente obliga a empezar de nuevo. El sistema muestra siempre lo mismo y no deja elegir qué mostrar, así que el cliente siente que le falta información.',
+        en: 'Every client report is built by hand. Information is gathered from several spreadsheets, files and systems, copied into a presentation and sent by email. Every urgent request means starting over. The system always shows the same thing and does not let you choose what to show, so the client feels information is missing.',
+      },
+      laClave: {
+        es: 'Un informe amplio, construido una sola vez, que abarque todos los temas. La información ya está por debajo. A cada cliente le mostramos la parte que necesita, y si quiere ver más, se la mostramos.',
+        en: 'One broad report, built once, covering every topic. The information is already underneath. We show each client the part they need, and if they want to see more, we show them.',
+      },
+      ganamos: [
+        { t: { es: 'Tiempo para lo legal', en: 'Time for legal work' }, d: { es: 'El equipo deja de armar informes y vuelve a su trabajo jurídico.', en: 'The team stops assembling reports and returns to its legal work.' } },
+        { t: { es: 'Respuesta rápida', en: 'Fast response' }, d: { es: 'Si el cliente pide algo nuevo, se lo mostramos sin empezar de cero.', en: 'If the client asks for something new, we show it without starting from scratch.' } },
+        { t: { es: 'Una sola cifra', en: 'A single figure' }, d: { es: 'Todos los abogados informan con la misma base, así que el número es el mismo para todos.', en: 'Every lawyer reports from the same base, so the number is the same for everyone.' } },
+      ],
+      comoAcerca: {
+        es: 'Es la cara de ALTO frente al cliente. Responde al pilar de experiencia del cliente: “Expandir el valor de nuestra entrega para ser el mejor socio de seguridad.”',
+        en: 'It is ALTO’s face to the client. It answers the client-experience pillar: “Expand the value of what we deliver to be the best security partner.”',
+      },
+      detalle: { label: { es: '19 de 121 · 15,7%', en: '19 of 121 · 15.7%' },
+        ids: ['MX-008','MX-001','MX-021','MX-022','MX-025','MX-007','MX-011','MX-017','MX-009','MX-015','MX-045','MX-050','CL-013','CL-016','CL-011','CL-014','CL-015','CO-010','CO-001'] },
     },
     {
-      n: 3, zona: 'base', pct: '21,5%', entradas: 26,
+      n: 3, zona: 'base', pct: '21,5%', entradas: 26, icono: 'consola',
       title: { es: 'Gestión operativa integral', en: 'Comprehensive Operational Management' },
       corto: { es: 'Gestión operativa integral', en: 'Integral operations management' },
       rol: { es: 'Genera información desde la operación.', en: 'Generates information from operations.' },
-      explica: { es: '', en: '' },
+      esencia: { es: 'El trabajo, dentro', en: 'The work, inside' },
+      titulo: { es: 'El equipo trabaja y se gestiona dentro del sistema', en: 'The team works and is managed inside the system' },
+      gancho: { es: 'El abogado opera dentro. El coordinador mide y controla desde dentro.', en: 'The lawyer operates inside. The coordinator measures and controls from inside.' },
+      frecuencia: { es: '1 de cada 5 problemas · el macroproyecto que más reúne', en: '1 in every 5 problems · the macroproject that gathers the most' },
+      paises: { es: 'México, Chile, Colombia, Estados Unidos', en: 'Mexico, Chile, Colombia, United States' },
+      queNosPasa: {
+        es: 'El sistema sirve para registrar después, no para trabajar. El abogado no tiene dentro lo que necesita para su día a día, así que trabaja en correos, chats, papel y planillas aparte. El coordinador no tiene tableros de control: el sistema no mide lo que necesitamos para saber si cumplimos las metas de la empresa. Cada uno mide a su manera.',
+        en: 'The system is for recording afterwards, not for working. The lawyer does not have inside what the day-to-day requires, so they work in emails, chats, paper and separate spreadsheets. The coordinator has no control dashboards: the system does not measure what we need in order to know whether we are meeting the company’s targets. Everyone measures their own way.',
+      },
+      laClave: {
+        es: '“La plataforma legal no puede ser solo un registro. Tiene que ser una plataforma de gestión legal.” (Jorge Nazer, Presidente). Es de gestión cuando el trabajo ocurre dentro: ahí el abogado opera y el coordinador mide y controla.',
+        en: '“The legal platform cannot be just a record. It has to be a legal management platform.” (Jorge Nazer, President). It becomes management when the work happens inside: that is where the lawyer operates and the coordinator measures and controls.',
+      },
+      ganamos: [
+        { t: { es: 'Sin planillas paralelas', en: 'No parallel spreadsheets' }, d: { es: 'La información entra una vez, cuando pasa.', en: 'Information goes in once, when it happens.' } },
+        { t: { es: 'Procesos iguales para todos', en: 'The same processes for everyone' }, d: { es: 'Y lo que se repite se puede automatizar.', en: 'And whatever repeats can be automated.' } },
+        { t: { es: 'Medir y controlar la operación', en: 'Measure and control operations' }, d: { es: 'Medimos lo que necesitamos para cumplir las metas de la empresa y sabemos, día a día, si lo estamos logrando.', en: 'We measure what we need in order to meet the company’s targets and we know, day by day, whether we are getting there.' } },
+      ],
+      comoAcerca: {
+        es: 'Responde al pilar de sostenibilidad financiera: “Mantener un enfoque de productividad y eficiencia en el manejo operativo y financiero para asegurar el logro de objetivos.”',
+        en: 'It answers the financial-sustainability pillar: “Maintain a focus on productivity and efficiency in operational and financial management to secure the achievement of objectives.”',
+      },
+      detalle: { label: { es: '26 de 121 · 21,5%', en: '26 of 121 · 21.5%' },
+        ids: ['MX-004','MX-035','MX-046','MX-031','MX-014','MX-038','MX-016','MX-002','MX-034','MX-030','MX-023','MX-017','MX-028','MX-018','MX-052','MX-029','CL-008','CL-007','CL-009','CL-010','CL-025','CO-007','CO-008','USA-001','USA-002','USA-003'] },
     },
     {
-      n: 4, zona: 'base', pct: '11,6%', entradas: 14,
+      n: 4, zona: 'base', pct: '11,6%', entradas: 14, icono: 'expediente',
       title: { es: 'Gestión documental, evidencia, búsqueda y acceso', en: 'Document Management, Evidence, Search and Access' },
       corto: { es: 'Documental, evidencia y búsqueda', en: 'Documents, evidence & search' },
       rol: { es: 'Extrae y captura datos desde la evidencia.', en: 'Extracts and captures data from evidence.' },
-      explica: { es: '', en: '' },
+      esencia: { es: 'La fuente oficial', en: 'The official source' },
+      titulo: { es: 'Cada caso con sus documentos oficiales', en: 'Every case with its official documents' },
+      gancho: { es: 'Si tenemos la fuente oficial, tenemos la certeza.', en: 'If we have the official source, we have certainty.' },
+      frecuencia: { es: '1 de cada 9 problemas', en: '1 in every 9 problems' },
+      paises: { es: 'México, Chile, Colombia', en: 'Mexico, Chile, Colombia' },
+      queNosPasa: {
+        es: 'No tenemos un lugar donde guardar los documentos del caso. La evidencia, las fotos y los documentos están repartidos en correos, chats y carpetas personales. Lo más valioso, el expediente judicial, no tiene dónde quedar.',
+        en: 'We have nowhere to keep the case documents. The evidence, the photos and the documents are scattered across emails, chats and personal folders. The most valuable item, the court file, has nowhere to live.',
+      },
+      laClave: {
+        es: 'Contar con la fuente oficial. Con el expediente judicial completo verificamos nuestra información y completamos lo que nos falta. Desde ahí llenamos con certeza el evento, el sujeto, la causa y el resultado.',
+        en: 'Having the official source. With the complete court file we verify our information and fill in what is missing. From there we complete the event, the subject, the case and the outcome with certainty.',
+      },
+      ganamos: [
+        { t: { es: 'Información verificada y completa', en: 'Verified, complete information' }, d: { es: 'Lo que registramos se compara con la fuente oficial, y lo que falta se completa desde ahí.', en: 'What we record is checked against the official source, and what is missing is completed from it.' } },
+        { t: { es: 'Menos tiempo buscando', en: 'Less time searching' }, d: { es: 'Se ve sin descargar y se encuentra con una sola búsqueda.', en: 'It is viewed without downloading and found with a single search.' } },
+        { t: { es: 'La evidencia queda en la empresa', en: 'The evidence stays in the company' }, d: { es: 'No en chats ni en carpetas personales.', en: 'Not in chats or personal folders.' } },
+      ],
+      comoAcerca: {
+        es: 'Es lo que nos permite “perseguir con inteligencia y análisis los delitos que más les importan”.',
+        en: 'It is what lets us “prosecute, with intelligence and analysis, the crimes that matter most to them”.',
+      },
+      detalle: { label: { es: '14 de 121 · 11,6%', en: '14 of 121 · 11.6%' },
+        ids: ['MX-006','MX-037','MX-033','MX-019','MX-032','CL-002','CL-001','CL-003','CL-021','CL-006','CL-012','CL-042','CL-040','CO-006'] },
     },
     {
-      n: 5, zona: 'base', pct: '6,6%', entradas: 8,
+      n: 5, zona: 'base', pct: '6,6%', entradas: 8, icono: 'escrito',
       title: { es: 'Automatización documental jurídica e IA legal asistida', en: 'Legal Document Automation and Assisted Legal AI' },
       corto: { es: 'Automatización e IA legal', en: 'Legal automation & AI' },
       rol: { es: 'Construye la base, pero entra después: no es condición de partida.', en: 'Also builds the base, but comes later: it is not a starting condition.' },
-      explica: { es: '', en: '' },
+      esencia: { es: 'El escrito sale solo', en: 'The brief writes itself' },
+      titulo: { es: 'Los escritos de trámite, listos desde el sistema', en: 'Routine filings, ready from the system' },
+      gancho: { es: 'El sistema arma lo repetitivo. El abogado firma y se dedica a lo importante.', en: 'The system assembles what repeats. The lawyer signs and gets on with what matters.' },
+      frecuencia: { es: 'Lo pidieron los tres países · 1 de cada 15 problemas', en: 'Requested by all three countries · 1 in every 15 problems' },
+      paises: { es: 'México, Chile, Colombia', en: 'Mexico, Chile, Colombia' },
+      queNosPasa: {
+        es: 'La mayoría de nuestros escritos son de mero trámite: simples y repetitivos. Aun así, cada abogado los arma copiando y pegando desde sus propios formatos, y vuelve a escribir a mano datos que el sistema ya tiene.',
+        en: 'Most of our filings are routine: simple and repetitive. Even so, each lawyer assembles them by copying and pasting from their own formats, and retypes by hand data the system already holds.',
+      },
+      laClave: {
+        es: 'Es lo mínimo de cualquier plataforma legal. Con los datos dentro, el escrito sale solo desde una plantilla aprobada: el abogado marca la norma que quiere aplicar, lo descarga, lo firma y lo presenta. La inteligencia artificial apoya la investigación jurídica (leyes, sentencias y doctrina), con abogados capacitados para usarla.',
+        en: 'It is the minimum for any legal platform. With the data inside, the filing comes out on its own from an approved template: the lawyer picks the rule to apply, downloads it, signs it and files it. AI supports legal research (statutes, rulings and doctrine), with lawyers trained to use it.',
+      },
+      ganamos: [
+        { t: { es: 'Eficiencia operativa', en: 'Operational efficiency' }, d: { es: 'Las tareas manuales y repetitivas se automatizan, y el abogado se dedica a la estrategia del caso.', en: 'Manual, repetitive tasks are automated, and the lawyer focuses on case strategy.' } },
+        { t: { es: 'Un motivo para trabajar dentro', en: 'A reason to work inside' }, d: { es: 'Si el abogado carga bien sus datos, el escrito sale solo. Mientras mejor la información, menos trabajo.', en: 'If the lawyer enters their data properly, the filing comes out on its own. The better the information, the less work.' } },
+        { t: { es: 'Formatos iguales y aprobados', en: 'Consistent, approved formats' }, d: { es: 'La misma calidad en todo el servicio, ajustada a cada país.', en: 'The same quality across the whole service, adjusted to each country.' } },
+      ],
+      comoAcerca: {
+        es: 'Responde al pilar de nuestra gente y cultura: “Evolucionamos a equipos más especializados, analíticos y consultivos.”',
+        en: 'It answers the people-and-culture pillar: “We are evolving towards more specialized, analytical and consultative teams.”',
+      },
+      detalle: { label: { es: '8 de 121 · 6,6%', en: '8 of 121 · 6.6%' },
+        ids: ['MX-013','MX-043','MX-041','CL-004','CL-005','CL-031','CL-018','CO-010'] },
     },
     {
-      n: 6, zona: 'patron', pct: '9,1%', entradas: 11,
+      n: 6, zona: 'patron', pct: '9,1%', entradas: 11, icono: 'huella',
       title: { es: 'Inteligencia criminal y gestión integral del infractor', en: 'Criminal Intelligence and Comprehensive Offender Management' },
       corto: { es: 'Inteligencia criminal y del infractor', en: 'Criminal & offender intelligence' },
       rol: { es: 'Produce el patrón: recurrencia, vínculos y reincidencia.', en: 'Produces the pattern: recurrence, links and repeat offending.' },
-      explica: { es: '', en: '' },
+      esencia: { es: 'Inteligencia criminal', en: 'Criminal intelligence' },
+      titulo: { es: '', en: '' }, gancho: { es: '', en: '' },
+      frecuencia: { es: '1 de cada 11 problemas', en: '1 in every 11 problems' },
+      paises: { es: 'México, Chile, Colombia, Estados Unidos', en: 'Mexico, Chile, Colombia, United States' },
+      queNosPasa: { es: '', en: '' }, laClave: { es: '', en: '' }, ganamos: [], comoAcerca: { es: '', en: '' },
+      detalle: { label: { es: '11 de 121 · 9,1%', en: '11 of 121 · 9.1%' }, ids: [] },
     },
     {
-      n: 7, zona: 'base', pct: '4,1%', entradas: 5,
+      n: 7, zona: 'base', pct: '4,1%', entradas: 5, icono: 'enlace',
       title: { es: 'Integraciones externas e interoperabilidad institucional', en: 'External Integrations and Institutional Interoperability' },
       corto: { es: 'Integraciones institucionales', en: 'Institutional integrations' },
       rol: { es: 'Enriquece con fuentes externas.', en: 'Enriches with external sources.' },
-      explica: { es: '', en: '' },
+      esencia: { es: 'Conectados a la justicia', en: 'Connected to the courts' },
+      titulo: { es: '', en: '' }, gancho: { es: '', en: '' },
+      frecuencia: { es: '1 de cada 24 problemas', en: '1 in every 24 problems' },
+      paises: { es: 'México, Chile, Colombia', en: 'Mexico, Chile, Colombia' },
+      queNosPasa: { es: '', en: '' }, laClave: { es: '', en: '' }, ganamos: [], comoAcerca: { es: '', en: '' },
+      detalle: { label: { es: '5 de 121 · 4,1%', en: '5 of 121 · 4.1%' }, ids: [] },
     },
     {
-      n: 8, zona: 'base', pct: '11,6%', entradas: 14,
+      n: 8, zona: 'base', pct: '11,6%', entradas: 14, icono: 'balanza',
       title: { es: 'Proceso de gestión de causas y procedimiento penal configurable', en: 'Case Management Process and Configurable Criminal Procedure' },
       corto: { es: 'Procedimiento penal configurable', en: 'Configurable criminal procedure' },
       rol: { es: 'Genera dato jurídico estructurado.', en: 'Generates structured legal data.' },
-      explica: { es: '', en: '' },
+      esencia: { es: 'Un proceso, cuatro países', en: 'One process, four countries' },
+      titulo: { es: '', en: '' }, gancho: { es: '', en: '' },
+      frecuencia: { es: '1 de cada 9 problemas', en: '1 in every 9 problems' },
+      paises: { es: 'México, Chile, Colombia', en: 'Mexico, Chile, Colombia' },
+      queNosPasa: { es: '', en: '' }, laClave: { es: '', en: '' }, ganamos: [], comoAcerca: { es: '', en: '' },
+      detalle: { label: { es: '14 de 121 · 11,6%', en: '14 of 121 · 11.6%' }, ids: [] },
     },
     {
-      n: 9, zona: 'trans', pct: '5,0%', entradas: 6,
+      n: 9, zona: 'trans', pct: '5,0%', entradas: 6, icono: 'movil',
       title: { es: 'Condiciones habilitantes para la implementación', en: 'Enabling Conditions for Implementation' },
       corto: { es: 'Condiciones habilitantes', en: 'Enabling conditions' },
       rol: { es: 'Condiciona la ejecución del resto del roadmap.', en: 'Conditions the execution of the rest of the roadmap.' },
-      explica: { es: '', en: '' },
+      esencia: { es: 'Que se pueda usar', en: 'Make it usable' },
+      titulo: { es: '', en: '' }, gancho: { es: '', en: '' },
+      frecuencia: { es: '1 de cada 20 problemas', en: '1 in every 20 problems' },
+      paises: { es: 'México, Chile, Colombia', en: 'Mexico, Chile, Colombia' },
+      queNosPasa: { es: '', en: '' }, laClave: { es: '', en: '' }, ganamos: [], comoAcerca: { es: '', en: '' },
+      detalle: { label: { es: '6 de 121 · 5,0%', en: '6 of 121 · 5.0%' }, ids: [] },
     },
   ];
+
+  // ---- Iconos en los que se transforma el número al pasar por encima ----
+  // Trazo simple, en la línea de los que ya usa el sitio (24px, stroke 2).
+  const ICONOS = {
+    escudo:     '<path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/>',
+    tablero:    '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/><path d="M13 16h4"/><path d="M13 12.5h4"/>',
+    consola:    '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9h4"/><path d="M7 13h7"/><path d="M7 17h5"/><path d="M17 8.5l1.6 1.6L21 7.7"/>',
+    expediente: '<path d="M4 4a2 2 0 0 1 2-2h7l5 5v6"/><path d="M13 2v5h5"/><circle cx="12" cy="16" r="4"/><path d="M15 19l3.5 3.5"/>',
+    escrito:    '<path d="M6 2h8l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/><path d="M14 2v5h5"/><path d="M8.5 13.5l1 2.2 2.2 1-2.2 1-1 2.2-1-2.2-2.2-1 2.2-1z"/><path d="M15 12.5l.6 1.3 1.4.6-1.4.6-.6 1.3-.6-1.3-1.4-.6 1.4-.6z"/>',
+    huella:     '<path d="M12 11a2 2 0 0 1 2 2c0 2.5-.4 5-1.2 7"/><path d="M8.5 20.5A14 14 0 0 0 10 13a2 2 0 0 1 4 0c0 1.2-.1 2.4-.3 3.5"/><path d="M5.5 17.5A17 17 0 0 0 6.5 13a5.5 5.5 0 0 1 9.4-3.9"/><path d="M18 15.5c.3-1.6.4-2.6.4-2.5A6.4 6.4 0 0 0 9 7.3"/><path d="M4 9.5A9 9 0 0 1 19.6 8"/>',
+    enlace:     '<path d="M10 13a5 5 0 0 0 7.1 0l2.5-2.5a5 5 0 0 0-7.1-7.1L11 4.9"/><path d="M14 11a5 5 0 0 0-7.1 0l-2.5 2.5a5 5 0 0 0 7.1 7.1L13 19.1"/>',
+    balanza:    '<path d="M12 3v18"/><path d="M7 21h10"/><path d="M5 7h14"/><path d="M5 7l-3 6a3 3 0 0 0 6 0z"/><path d="M19 7l3 6a3 3 0 0 1-6 0z"/>',
+    movil:      '<rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18.5h2"/><path d="M9.5 6.5h5"/>',
+  };
 
   // ---- Los doce proyectos que hay que agregar (lámina 9) ----
   // `mp` = macroproyecto al que le dan profundidad (mapeo de la lámina 10).
@@ -309,6 +463,8 @@ window.V2 = (function () {
     // Flujo
     fnHint:   { es: 'Pulsa una caja del flujo —o la banda transversal— para ver qué macroproyectos la construyen.', en: 'Click a box in the flow —or the cross-cutting band— to see which macroprojects build it.' },
     verNueve: { es: 'Ver los nueve', en: 'Show all nine' },
+    certezaAca:  { es: 'La certeza está acá.', en: 'The certainty sits here.' },
+    certezaAcaD: { es: 'Desde la causa —los registros de la fiscalía y el tribunal— se completan el evento, el sujeto y el resultado.', en: 'From the case —the records of the prosecutor’s office and the court— the event, the subject and the outcome are completed.' },
     bandaTrans: { es: 'Lo transversal · atraviesa las seis cajas', en: 'Cross-cutting · runs through all six boxes' },
 
     // Tarjetas
@@ -320,6 +476,17 @@ window.V2 = (function () {
     brechas:     { es: 'brechas', en: 'gaps' },
     delTotal:    { es: 'del levantamiento', en: 'of the assessment' },
     seConcreta:  { es: 'Se concreta en', en: 'Becomes' },
+    // Frente y reverso de la tarjeta
+    verExplicacion: { es: 'Ver explicación', en: 'See the explanation' },
+    volverFrente:   { es: 'Volver', en: 'Back' },
+    declarados:     { es: 'declarados por los equipos legales', en: 'reported by the legal teams' },
+    queNosPasa:     { es: 'Qué nos pasa', en: 'What is happening to us' },
+    laClave:        { es: 'La clave', en: 'The key' },
+    queGanamos:     { es: 'Qué ganamos', en: 'What we gain' },
+    comoAcerca:     { es: 'Cómo nos acerca a la estrategia', en: 'How it moves us toward the strategy' },
+    verDetalle:     { es: 'Ver detalle', en: 'See detail' },
+    ocultarDetalle: { es: 'Ocultar detalle', en: 'Hide detail' },
+    verIcono:       { es: 'Pasa por encima para ver el ícono', en: 'Hover to see the icon' },
 
     // Zonas (chip)
     zona_base:   { es: 'La base', en: 'The base' },
@@ -348,5 +515,5 @@ window.V2 = (function () {
     transversales: { es: 'Transversales', en: 'Cross-cutting' },
   };
 
-  return { CAJAS, ZONAS, MP, AGREGADOS, BENEFICIOS, BLOQUES, GANANCIAS, ALLIANCE, UI };
+  return { CAJAS, ZONAS, MP, ICONOS, AGREGADOS, BENEFICIOS, BLOQUES, GANANCIAS, ALLIANCE, UI };
 })();

@@ -31,9 +31,9 @@
     'ceo.role': 'Jorge Nazer · President, ALTO',
     'ceo.date': 'Thursday, June 11, 2026',
 
-    'flujo.kicker': 'From information to decision',
-    'flujo.h2': 'The flow, and where each macroproject fits',
-    'flujo.lead': 'Legal operations generate information. When we connect <strong>event</strong>, <strong>subject</strong>, <strong>case</strong> and <strong>outcome</strong> we can recognize recurrences and patterns, and from there an actionable recommendation is born. Click a box to see which macroprojects build it.',
+    'flujo.kicker': 'ALTO’s strategy, in six boxes',
+    'flujo.h2': 'From information to decision',
+    'flujo.lead': 'Today the certainty sits in <strong>the case</strong>. From there the event, the subject and the outcome are completed — and only with those four boxes filled do the pattern and the recommendation appear.',
     'obj.label': 'The objective',
     'obj.text': '“To be our clients’ trusted, strategic partner, helping them prevent and prosecute — with intelligence and analysis — the crimes that matter most to them, so that together we build safer communities.”',
     'obj.note': 'The full chain is the operational answer to “with intelligence and analysis”.',
@@ -180,6 +180,7 @@
     arcs.appendChild(el('span', 'fn-arc a-socio', t(D.ZONAS.patron.arco)));
     flowHost.appendChild(arcs);
 
+    const wrap = el('div', 'fn-cajas-wrap');
     const row = el('div', 'fn-cajas');
     D.CAJAS.forEach((c) => {
       const b = el('button', 'fn-caja z-' + c.z);
@@ -190,9 +191,26 @@
       b.appendChild(el('span', 'fn-caja-t', t(c.t)));
       b.appendChild(el('span', 'fn-caja-s', t(c.s)));
       b.addEventListener('click', () => selZona(activeZ === c.z ? null : c.z));
+      if (c.n === 3) b.classList.add('fuente');
       row.appendChild(b);
     });
-    flowHost.appendChild(row);
+    wrap.appendChild(row);
+
+    // La causa es hoy el único registro con certeza: desde ahí se completan
+    // el evento, el sujeto y el resultado. Eso no se leía en la fila, así que
+    // se dibuja — es el punto que hay que entender de esta lámina.
+    const ns = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(ns, 'svg');
+    svg.setAttribute('class', 'fn-rayos');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.innerHTML = '<defs><marker id="fnPunta" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="currentColor"/></marker></defs><g class="fn-rayos-g"></g>';
+    wrap.appendChild(svg);
+    const pie = el('p', 'fn-fuente-pie');
+    pie.appendChild(el('strong', null, U('certezaAca')));
+    pie.appendChild(document.createTextNode(' ' + U('certezaAcaD')));
+    wrap.appendChild(pie);
+
+    flowHost.appendChild(wrap);
 
     const band = el('button', 'fn-band');
     band.type = 'button';
@@ -210,7 +228,48 @@
 
     flowHost.appendChild(el('div', 'fn-panel'));
     pintarZona();
+    dibujarRayos();
   }
+
+  // Curvas desde la caja 3 (causa) hacia el evento, el sujeto y el resultado.
+  // Se calculan desde la posición real de las cajas, así que sobreviven a
+  // cualquier ancho; si la fila se parte en varias líneas, no se dibujan.
+  function dibujarRayos() {
+    if (!flowHost) return;
+    const wrap = flowHost.querySelector('.fn-cajas-wrap');
+    const svg = flowHost.querySelector('.fn-rayos');
+    if (!wrap || !svg) return;
+    const g = svg.querySelector('.fn-rayos-g');
+    g.textContent = '';
+
+    const cajas = [...flowHost.querySelectorAll('.fn-caja')];
+    if (cajas.length < 4) return;
+    const r0 = wrap.getBoundingClientRect();
+    const rs = cajas.map((c) => c.getBoundingClientRect());
+
+    // una sola fila: si no, las curvas cruzarían de línea en línea
+    const unaFila = rs.every((r) => Math.abs(r.top - rs[0].top) < 4);
+    svg.style.display = unaFila ? '' : 'none';
+    wrap.classList.toggle('con-rayos', unaFila);
+    if (!unaFila) return;
+
+    svg.setAttribute('viewBox', '0 0 ' + Math.round(r0.width) + ' ' + Math.round(r0.height));
+    const pt = (i) => ({ x: rs[i].left - r0.left + rs[i].width / 2, y: rs[i].bottom - r0.top });
+    const origen = pt(2);
+    const hondo = origen.y + 38;
+
+    [0, 1, 3].forEach((i) => {
+      const d = pt(i);
+      const path = document.createElementNS(ns2, 'path');
+      path.setAttribute('d', 'M ' + origen.x.toFixed(1) + ' ' + origen.y.toFixed(1) +
+        ' C ' + origen.x.toFixed(1) + ' ' + hondo.toFixed(1) +
+        ', ' + d.x.toFixed(1) + ' ' + hondo.toFixed(1) +
+        ', ' + d.x.toFixed(1) + ' ' + (d.y + 7).toFixed(1));
+      path.setAttribute('marker-end', 'url(#fnPunta)');
+      g.appendChild(path);
+    });
+  }
+  const ns2 = 'http://www.w3.org/2000/svg';
 
   // ============================================================
   //  2 · Los nueve macroproyectos — presentador de uno en uno
@@ -239,6 +298,13 @@
       s.classList.remove('entra-der', 'entra-izq');
       s.classList.toggle('is-active', on);
       s.setAttribute('aria-hidden', on ? 'false' : 'true');
+      // al salir, la tarjeta vuelve a su frente y el número a ser número
+      if (!on) {
+        const card = s.querySelector('.mps-card');
+        if (card && card.classList.contains('vuelta')) girar(card, false);
+        const vis = s.querySelector('.mps-visual');
+        if (vis) vis.classList.remove('on');
+      }
     });
     dots.forEach((d, k) => {
       d.classList.toggle('active', k === destino);
@@ -246,12 +312,132 @@
       d.tabIndex = k === destino ? 0 : -1;
     });
 
+    aplicarAlto();
+
     if (dir !== 0 && !reduced) {
       const s = slides[destino];
       void s.offsetWidth; // reinicia la animación aunque se repita la dirección
       s.classList.add(dir > 0 ? 'entra-der' : 'entra-izq');
     }
     actual = destino;
+  }
+
+  function svgIcono(clave) {
+    const d = D.ICONOS[clave];
+    if (!d) return null;
+    const ns = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(ns, 'svg');
+    svg.setAttribute('class', 'mps-icono');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    svg.setAttribute('fill', 'none');
+    svg.setAttribute('stroke', 'currentColor');
+    svg.setAttribute('stroke-width', '1.6');
+    svg.setAttribute('stroke-linecap', 'round');
+    svg.setAttribute('stroke-linejoin', 'round');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.innerHTML = d;
+    return svg;
+  }
+
+  // Cara frontal: el titular de Constanza, su gancho y cuánto pesa.
+  function caraFrente(mp, card) {
+    const f = el('div', 'mps-face mps-front');
+    const eyebrow = el('div', 'mps-eyebrow');
+    eyebrow.appendChild(el('span', 'mps-eyebrow-id', 'MP' + mp.n));
+    eyebrow.appendChild(el('span', 'mps-eyebrow-formal', t(mp.title)));
+    f.appendChild(eyebrow);
+
+    const conTexto = !!t(mp.titulo);
+    f.appendChild(el('h3', 'mps-title', conTexto ? t(mp.titulo) : t(mp.title)));
+    if (conTexto) f.appendChild(el('p', 'mps-gancho', t(mp.gancho)));
+
+    const frec = el('p', 'mps-frec');
+    frec.appendChild(el('strong', null, t(mp.frecuencia)));
+    frec.appendChild(document.createTextNode(' ' + U('declarados') + ' · ' + t(mp.paises)));
+    f.appendChild(frec);
+
+    if (conTexto) {
+      const btn = el('button', 'mps-ver');
+      btn.type = 'button';
+      btn.appendChild(el('span', null, U('verExplicacion')));
+      btn.appendChild(el('span', 'mps-ver-flecha', '\u2192'));
+      btn.addEventListener('click', () => girar(card, true));
+      f.appendChild(btn);
+    } else {
+      const pend = el('div', 'mps-pendiente');
+      pend.appendChild(el('span', 'mps-pend-badge', U('pendiente')));
+      pend.appendChild(el('p', 'mps-pend-text', U('pendienteD')));
+      f.appendChild(pend);
+    }
+    return f;
+  }
+
+  // Cara trasera: la explicación completa, con los códigos de brecha plegados.
+  function caraReverso(mp, card) {
+    const b = el('div', 'mps-face mps-back');
+    b.appendChild(el('span', 'mps-back-id', 'MP' + mp.n + ' · ' + t(mp.title)));
+
+    const bloque = (k, texto) => {
+      const w = el('div', 'mps-bloque');
+      w.appendChild(el('span', 'mps-bloque-label', U(k)));
+      w.appendChild(el('p', 'mps-bloque-text', texto));
+      return w;
+    };
+    b.appendChild(bloque('queNosPasa', t(mp.queNosPasa)));
+    b.appendChild(bloque('laClave', t(mp.laClave)));
+
+    if (mp.ganamos.length) {
+      const g = el('div', 'mps-bloque');
+      g.appendChild(el('span', 'mps-bloque-label', U('queGanamos')));
+      const lista = el('ul', 'mps-ganamos');
+      mp.ganamos.forEach((x) => {
+        const li = el('li');
+        li.appendChild(el('strong', null, t(x.t) + '. '));
+        li.appendChild(document.createTextNode(t(x.d)));
+        lista.appendChild(li);
+      });
+      g.appendChild(lista);
+      b.appendChild(g);
+    }
+    b.appendChild(bloque('comoAcerca', t(mp.comoAcerca)));
+
+    // Códigos de brecha: escondidos hasta que alguien los pida.
+    if (mp.detalle.ids.length) {
+      const det = el('div', 'mps-detalle');
+      const tog = el('button', 'mps-detalle-tog');
+      tog.type = 'button';
+      tog.setAttribute('aria-expanded', 'false');
+      tog.textContent = '\u25b8 ' + U('verDetalle');
+      const cuerpo = el('div', 'mps-detalle-cuerpo');
+      cuerpo.appendChild(el('span', 'mps-detalle-label', t(mp.detalle.label)));
+      const ids = el('div', 'mps-detalle-ids');
+      mp.detalle.ids.forEach((id) => ids.appendChild(el('span', 'mps-id', id)));
+      cuerpo.appendChild(ids);
+      tog.addEventListener('click', () => {
+        const abierto = det.classList.toggle('abierto');
+        tog.setAttribute('aria-expanded', abierto ? 'true' : 'false');
+        tog.textContent = (abierto ? '\u25be ' : '\u25b8 ') + U(abierto ? 'ocultarDetalle' : 'verDetalle');
+      });
+      det.appendChild(tog);
+      det.appendChild(cuerpo);
+      b.appendChild(det);
+    }
+
+    const volver = el('button', 'mps-volver');
+    volver.type = 'button';
+    volver.textContent = '\u2190 ' + U('volverFrente');
+    volver.addEventListener('click', () => girar(card, false));
+    b.appendChild(volver);
+    return b;
+  }
+
+  function girar(card, alReverso) {
+    card.classList.toggle('vuelta', alReverso);
+    aplicarAlto();
+    const f = card.querySelector('.mps-front');
+    const b = card.querySelector('.mps-back');
+    if (f) f.setAttribute('aria-hidden', alReverso ? 'true' : 'false');
+    if (b) b.setAttribute('aria-hidden', alReverso ? 'false' : 'true');
   }
 
   function renderSlider() {
@@ -270,48 +456,30 @@
       s.setAttribute('aria-hidden', 'true');
 
       s.appendChild(el('div', 'mps-shape'));
+
+      // El número se transforma en el ícono del macroproyecto al pasar por
+      // encima; en pantalla táctil, al tocarlo.
+      const visual = el('button', 'mps-visual');
+      visual.type = 'button';
+      visual.setAttribute('aria-label', t(mp.esencia));
+      visual.title = U('verIcono');
       const ghost = el('span', 'mps-ghost', String(mp.n).padStart(2, '0'));
       ghost.setAttribute('aria-hidden', 'true');
-      s.appendChild(ghost);
+      visual.appendChild(ghost);
+      const ico = svgIcono(mp.icono);
+      if (ico) visual.appendChild(ico);
+      visual.appendChild(el('span', 'mps-esencia', t(mp.esencia)));
+      visual.addEventListener('click', () => visual.classList.toggle('on'));
+      s.appendChild(visual);
 
+      const flip = el('div', 'mps-flip');
       const card = el('div', 'mps-card');
-      const eyebrow = el('div', 'mps-eyebrow');
-      eyebrow.appendChild(el('span', 'mps-eyebrow-id', 'MP' + mp.n));
-      eyebrow.appendChild(el('span', 'mps-eyebrow-zona', U('zona_' + mp.zona)));
-      card.appendChild(eyebrow);
-      card.appendChild(el('h3', 'mps-title', t(mp.title)));
+      card.appendChild(caraFrente(mp, card));
+      if (t(mp.titulo)) card.appendChild(caraReverso(mp, card));
+      girar(card, false);
+      flip.appendChild(card);
+      s.appendChild(flip);
 
-      const texto = t(mp.explica);
-      if (texto) {
-        card.appendChild(el('p', 'mps-explica', texto));
-      } else {
-        const pend = el('div', 'mps-pendiente');
-        pend.appendChild(el('span', 'mps-pend-badge', U('pendiente')));
-        pend.appendChild(el('p', 'mps-pend-text', U('pendienteD')));
-        card.appendChild(pend);
-      }
-
-      const rol = el('p', 'mps-rol');
-      rol.appendChild(el('span', 'mps-rol-label', U('enElFlujo')));
-      rol.appendChild(document.createTextNode(t(mp.rol)));
-      card.appendChild(rol);
-
-      const agr = D.AGREGADOS.filter((a) => a.mp === mp.n);
-      if (agr.length) {
-        const wrap = el('div', 'mps-agr');
-        wrap.appendChild(el('span', 'mps-agr-label', U('seConcreta')));
-        const list = el('div', 'mps-agr-list');
-        agr.forEach((a) => list.appendChild(el('span', 'mps-agr-chip', t(a.t))));
-        wrap.appendChild(list);
-        card.appendChild(wrap);
-      }
-
-      const stats = el('div', 'mps-stats');
-      stats.appendChild(el('span', null, mp.entradas + ' ' + U('brechas')));
-      stats.appendChild(el('span', null, mp.pct + ' ' + U('delTotal')));
-      card.appendChild(stats);
-
-      s.appendChild(card);
       stage.appendChild(s);
       slides.push(s);
     });
@@ -351,13 +519,11 @@
     });
     host.appendChild(riel);
 
-    // teclado: flechas dentro del riel
     riel.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowRight') { e.preventDefault(); verSlide(actual + 1, 1); dots[actual].focus(); }
       if (e.key === 'ArrowLeft') { e.preventDefault(); verSlide(actual - 1, -1); dots[actual].focus(); }
     });
 
-    // arrastre en pantalla táctil
     let x0 = null;
     stage.addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; }, { passive: true });
     stage.addEventListener('touchend', (e) => {
@@ -372,22 +538,59 @@
     ajustarAlto();
   }
 
-  // Las láminas van superpuestas en absoluto, así que el escenario necesita
-  // el alto de la más larga; si no, se corta o deja un hueco. Se recalcula al
-  // cambiar de idioma y al redimensionar.
+  // Las láminas van superpuestas en absoluto y cada tarjeta tiene dos caras de
+  // alto muy distinto, así que medimos las dos una vez y después el escenario
+  // sigue a la cara que esté a la vista.
   function ajustarAlto() {
     const stage = document.querySelector('.mps-stage');
     if (!stage || !slides.length) return;
-    if (window.matchMedia('(max-width: 900px)').matches) { stage.style.minHeight = ''; return; }
-    stage.style.minHeight = '0px';
-    let alto = 0;
+
+    if (window.matchMedia('(max-width: 900px)').matches) {
+      stage.style.minHeight = '';
+      slides.forEach((s) => { s.querySelector('.mps-card').style.height = ''; });
+      return;
+    }
+
     slides.forEach((s) => {
       const visible = s.classList.contains('is-active');
       if (!visible) { s.style.visibility = 'hidden'; s.style.display = 'grid'; s.style.opacity = '0'; }
-      alto = Math.max(alto, s.querySelector('.mps-card').offsetHeight);
+      const card = s.querySelector('.mps-card');
+      const antes = card.style.height;
+      card.style.height = 'auto';
+
+      const medir = (cara) => {
+        if (!cara) return 0;
+        const pos = cara.style.position, tr = cara.style.transform;
+        cara.style.position = 'static';
+        cara.style.transform = 'none';
+        const h = Math.ceil(cara.getBoundingClientRect().height);
+        cara.style.position = pos;
+        cara.style.transform = tr;
+        return h;
+      };
+      s.dataset.hf = medir(s.querySelector('.mps-front'));
+      s.dataset.hb = medir(s.querySelector('.mps-back')) || s.dataset.hf;
+
+      card.style.height = antes;
       if (!visible) { s.style.visibility = ''; s.style.display = ''; s.style.opacity = ''; }
     });
-    stage.style.minHeight = Math.max(420, Math.round(alto / 0.82)) + 'px';
+
+    aplicarAlto();
+  }
+
+  // Ajusta el escenario a la cara que está a la vista en la lámina activa.
+  function aplicarAlto() {
+    const stage = document.querySelector('.mps-stage');
+    if (!stage || !slides.length) return;
+    if (window.matchMedia('(max-width: 900px)').matches) return;
+    slides.forEach((s, k) => {
+      const card = s.querySelector('.mps-card');
+      const cara = (k === actual && card.classList.contains('vuelta')) ? s.dataset.hb : s.dataset.hf;
+      card.style.height = (Number(cara) || 420) + 'px';
+    });
+    const activa = slides[actual];
+    const h = Number(activa.querySelector('.mps-card').classList.contains('vuelta') ? activa.dataset.hb : activa.dataset.hf) || 420;
+    stage.style.minHeight = Math.max(380, Math.round(h / 0.86)) + 'px';
   }
 
   // ============================================================
@@ -680,7 +883,7 @@
     if (scrollTopBtn) scrollTopBtn.classList.toggle('show', y > 600);
   }
   window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', () => ajustarAlto());
+  window.addEventListener('resize', () => { ajustarAlto(); dibujarRayos(); });
 
   scrollTopBtn?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' }));
 
