@@ -190,8 +190,11 @@
 /* Capa 2 · el número gigante, que al pasar por encima se transforma en el
    ícono del macroproyecto (o al tocarlo, en pantalla táctil). */
 .mps-visual {
+  /* La forma de color mide 48% del ancho, pero la tarjeta se le monta encima
+     desde el 34%: el número se centra en la franja que queda a la vista, no en
+     la forma completa, o se le come la mitad derecha. */
   position: absolute; left: 0; top: 50%; transform: translateY(-50%); z-index: 2;
-  width: 48%; height: 82%; display: grid; place-items: center; align-content: center;
+  width: 33%; height: 82%; display: grid; place-items: center; align-content: center;
   background: none; border: 0; padding: 0; cursor: pointer; font-family: var(--font);
 }
 .mps-visual:focus-visible { outline: 2px solid var(--white); outline-offset: -6px; border-radius: 26px; }
