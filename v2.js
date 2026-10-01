@@ -196,15 +196,9 @@
     });
     wrap.appendChild(row);
 
-    // La causa es hoy el único registro con certeza: desde ahí se completan
-    // el evento, el sujeto y el resultado. Eso no se leía en la fila, así que
-    // se dibuja — es el punto que hay que entender de esta lámina.
-    const ns = 'http://www.w3.org/2000/svg';
-    const svg = document.createElementNS(ns, 'svg');
-    svg.setAttribute('class', 'fn-rayos');
-    svg.setAttribute('aria-hidden', 'true');
-    svg.innerHTML = '<defs><marker id="fnPunta" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="currentColor"/></marker></defs><g class="fn-rayos-g"></g>';
-    wrap.appendChild(svg);
+    // La causa es hoy el único registro con certeza: desde ahí se completan el
+    // evento, el sujeto y el resultado. Se dice con la caja destacada y este
+    // pie; se probó dibujar curvas desde la caja 3 y quedaban encima del texto.
     const pie = el('p', 'fn-fuente-pie');
     pie.appendChild(el('strong', null, U('certezaAca')));
     pie.appendChild(document.createTextNode(' ' + U('certezaAcaD')));
@@ -228,48 +222,9 @@
 
     flowHost.appendChild(el('div', 'fn-panel'));
     pintarZona();
-    dibujarRayos();
   }
 
-  // Curvas desde la caja 3 (causa) hacia el evento, el sujeto y el resultado.
-  // Se calculan desde la posición real de las cajas, así que sobreviven a
-  // cualquier ancho; si la fila se parte en varias líneas, no se dibujan.
-  function dibujarRayos() {
-    if (!flowHost) return;
-    const wrap = flowHost.querySelector('.fn-cajas-wrap');
-    const svg = flowHost.querySelector('.fn-rayos');
-    if (!wrap || !svg) return;
-    const g = svg.querySelector('.fn-rayos-g');
-    g.textContent = '';
 
-    const cajas = [...flowHost.querySelectorAll('.fn-caja')];
-    if (cajas.length < 4) return;
-    const r0 = wrap.getBoundingClientRect();
-    const rs = cajas.map((c) => c.getBoundingClientRect());
-
-    // una sola fila: si no, las curvas cruzarían de línea en línea
-    const unaFila = rs.every((r) => Math.abs(r.top - rs[0].top) < 4);
-    svg.style.display = unaFila ? '' : 'none';
-    wrap.classList.toggle('con-rayos', unaFila);
-    if (!unaFila) return;
-
-    svg.setAttribute('viewBox', '0 0 ' + Math.round(r0.width) + ' ' + Math.round(r0.height));
-    const pt = (i) => ({ x: rs[i].left - r0.left + rs[i].width / 2, y: rs[i].bottom - r0.top });
-    const origen = pt(2);
-    const hondo = origen.y + 38;
-
-    [0, 1, 3].forEach((i) => {
-      const d = pt(i);
-      const path = document.createElementNS(ns2, 'path');
-      path.setAttribute('d', 'M ' + origen.x.toFixed(1) + ' ' + origen.y.toFixed(1) +
-        ' C ' + origen.x.toFixed(1) + ' ' + hondo.toFixed(1) +
-        ', ' + d.x.toFixed(1) + ' ' + hondo.toFixed(1) +
-        ', ' + d.x.toFixed(1) + ' ' + (d.y + 7).toFixed(1));
-      path.setAttribute('marker-end', 'url(#fnPunta)');
-      g.appendChild(path);
-    });
-  }
-  const ns2 = 'http://www.w3.org/2000/svg';
 
   // ============================================================
   //  2 · Los nueve macroproyectos — presentador de uno en uno
@@ -883,7 +838,7 @@
     if (scrollTopBtn) scrollTopBtn.classList.toggle('show', y > 600);
   }
   window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', () => { ajustarAlto(); dibujarRayos(); });
+  window.addEventListener('resize', () => ajustarAlto());
 
   scrollTopBtn?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' }));
 
