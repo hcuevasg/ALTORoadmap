@@ -322,16 +322,34 @@ window.V2 = (function () {
         ids: ['MX-042','MX-044','MX-051','MX-027','MX-040','CL-032','CL-033','CL-029','CL-027','CL-008','CL-028','CL-035','CO-002','CO-003'] },
     },
     {
-      n: 9, zona: 'trans', pct: '5,0%', entradas: 6, icono: 'movil',
+      n: 9, zona: 'trans', pct: '5,0%', entradas: 6, icono: 'cimiento',
       title: { es: 'Condiciones habilitantes para la implementación', en: 'Enabling Conditions for Implementation' },
       corto: { es: 'Condiciones habilitantes', en: 'Enabling conditions' },
       rol: { es: 'Condiciona la ejecución del resto del roadmap.', en: 'Conditions the execution of the rest of the roadmap.' },
-      esencia: { es: 'Que se pueda usar', en: 'Make it usable' },
-      titulo: { es: '', en: '' }, gancho: { es: '', en: '' },
-      frecuencia: { es: '1 de cada 20 problemas', en: '1 in every 20 problems' },
-      paises: { es: 'México, Chile, Colombia', en: 'Mexico, Chile, Colombia' },
-      queNosPasa: { es: '', en: '' }, laClave: { es: '', en: '' }, ganamos: [], comoAcerca: { es: '', en: '' },
-      detalle: { label: { es: '6 de 121 · 5,0%', en: '6 of 121 · 5.0%' }, ids: [] },
+      esencia: { es: 'Lo básico, resuelto', en: 'The basics, solved' },
+      titulo: { es: 'Lo básico para que todo funcione', en: 'The basics that make everything work' },
+      gancho: { es: 'Sin equipos, acceso y soporte, ningún sistema rinde.', en: 'Without equipment, access and support, no system performs.' },
+      frecuencia: { es: 'Lo pidieron México y Chile · 1 de cada 20 problemas', en: 'Requested by Mexico and Chile · 1 in every 20 problems' },
+      paises: { es: 'México, Chile', en: 'Mexico, Chile' },
+      queNosPasa: {
+        es: 'El equipo no siempre tiene lo mínimo para trabajar dentro del sistema. Se entra por un enlace y no por una aplicación. Los teléfonos de la empresa son tan lentos que se usan los personales. La conexión para revisar cámaras se corta. Y el soporte técnico no distingue lo urgente: un problema que frena una causa espera igual que cualquier otro.',
+        en: 'The team does not always have the minimum needed to work inside the system. You get in through a link rather than an app. The company phones are so slow that people use their own. The connection for reviewing cameras drops. And IT support does not tell urgent from routine: a problem that stalls a case waits like any other.',
+      },
+      laClave: {
+        es: 'Antes que funciones nuevas, asegurar lo básico: equipos que funcionen, acceso directo, soporte que atienda primero lo urgente y abogados preparados para litigar.',
+        en: 'Before new features, securing the basics: equipment that works, direct access, support that handles the urgent first, and lawyers prepared to litigate.',
+      },
+      ganamos: [
+        { t: { es: 'Que el sistema se use', en: 'That the system gets used' }, d: { es: 'Si entrar y trabajar es fácil, el equipo trabaja dentro.', en: 'If getting in and working is easy, the team works inside.' } },
+        { t: { es: 'La información de la empresa, en equipos de la empresa', en: 'Company information, on company devices' }, d: { es: 'No en teléfonos personales.', en: 'Not on personal phones.' } },
+        { t: { es: 'Lo urgente primero', en: 'The urgent first' }, d: { es: 'El soporte atiende antes lo que frena una causa.', en: 'Support handles first whatever is stalling a case.' } },
+      ],
+      comoAcerca: {
+        es: 'Prepara a las personas y les da las herramientas que pide el pilar de nuestra gente y cultura: “Evolucionamos a equipos más especializados, analíticos y consultivos.”',
+        en: 'It prepares people and gives them the tools the people-and-culture pillar calls for: “We are evolving towards more specialized, analytical and consultative teams.”',
+      },
+      detalle: { label: { es: '6 de 121 · 5,0%', en: '6 of 121 · 5.0%' },
+        ids: ['MX-016','MX-012','MX-009','CL-044','CL-043','CL-045'] },
     },
   ];
 
@@ -349,6 +367,7 @@ window.V2 = (function () {
     enlace:     '<path d="M10 13a5 5 0 0 0 7.1 0l2.5-2.5a5 5 0 0 0-7.1-7.1L11 4.9"/><path d="M14 11a5 5 0 0 0-7.1 0l-2.5 2.5a5 5 0 0 0 7.1 7.1L13 19.1"/>',
     proceso:    '<circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="19" cy="18" r="2"/><path d="M7 6h10"/><path d="M5 8v6a4 4 0 0 0 4 4h8"/>',
     balanza:    '<path d="M12 3v18"/><path d="M7 21h10"/><path d="M5 7h14"/><path d="M5 7l-3 6a3 3 0 0 0 6 0z"/><path d="M19 7l3 6a3 3 0 0 1-6 0z"/>',
+    cimiento:   '<rect x="3" y="16" width="18" height="5" rx="1.5"/><rect x="5.5" y="9.5" width="6" height="5" rx="1.2"/><rect x="12.5" y="9.5" width="6" height="5" rx="1.2"/><rect x="9" y="3" width="6" height="5" rx="1.2"/>',
     movil:      '<rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18.5h2"/><path d="M9.5 6.5h5"/>',
   };
 
