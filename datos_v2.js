@@ -292,16 +292,34 @@ window.V2 = (function () {
         ids: ['MX-020','CL-030','CL-041','CO-015','CO-004'] },
     },
     {
-      n: 8, zona: 'base', pct: '11,6%', entradas: 14, icono: 'balanza',
+      n: 8, zona: 'base', pct: '11,6%', entradas: 14, icono: 'proceso',
       title: { es: 'Proceso de gestión de causas y procedimiento penal configurable', en: 'Case Management Process and Configurable Criminal Procedure' },
       corto: { es: 'Procedimiento penal configurable', en: 'Configurable criminal procedure' },
       rol: { es: 'Genera dato jurídico estructurado.', en: 'Generates structured legal data.' },
-      esencia: { es: 'Un proceso, cuatro países', en: 'One process, four countries' },
-      titulo: { es: '', en: '' }, gancho: { es: '', en: '' },
+      esencia: { es: 'Un proceso, cada país', en: 'One process, each country' },
+      titulo: { es: 'Un mismo proceso, con las reglas de cada país', en: 'One single process, with each country’s rules' },
+      gancho: { es: 'Lo común se hace igual en todos lados. Lo propio de cada país se ajusta.', en: 'What is common is done the same everywhere. What belongs to each country is adjusted.' },
       frecuencia: { es: '1 de cada 9 problemas', en: '1 in every 9 problems' },
       paises: { es: 'México, Chile, Colombia', en: 'Mexico, Chile, Colombia' },
-      queNosPasa: { es: '', en: '' }, laClave: { es: '', en: '' }, ganamos: [], comoAcerca: { es: '', en: '' },
-      detalle: { label: { es: '14 de 121 · 11,6%', en: '14 of 121 · 11.6%' }, ids: [] },
+      queNosPasa: {
+        es: 'El sistema no sigue la causa como ocurre en la realidad. El flujo es rígido: no deja volver atrás ni cerrar antes, y solo muestra etapas generales. Si hay varios imputados o varias penas, se registra todo una y otra vez. Lo propio de cada país (sus plazos, sus acuerdos, sus reglas) se lleva aparte, en planillas.',
+        en: 'The system does not follow the case as it actually unfolds. The workflow is rigid: it does not allow going back or closing early, and it only shows general stages. If there are several defendants or several sentences, everything is recorded over and over. What belongs to each country (its deadlines, its agreements, its rules) is kept apart, in spreadsheets.',
+      },
+      laClave: {
+        es: 'Una base común para todos y un ajuste por país. El proceso se diseña una vez, y cada país agrega lo suyo sin construir un sistema aparte.',
+        en: 'A common base for everyone and an adjustment per country. The process is designed once, and each country adds its own part without building a separate system.',
+      },
+      ganamos: [
+        { t: { es: 'El sistema refleja la causa real', en: 'The system reflects the real case' }, d: { es: 'Avanza, retrocede o se cierra como pasa en la justicia.', en: 'It moves forward, back or closes as it does in the courts.' } },
+        { t: { es: 'Registrar una sola vez', en: 'Record only once' }, d: { es: 'Varios imputados en una audiencia o varias penas en una condena se registran de una vez.', en: 'Several defendants in one hearing or several sentences in one conviction are recorded in a single step.' } },
+        { t: { es: 'Cada etapa con su plazo legal', en: 'Every stage with its legal deadline' }, d: { es: 'El proceso ya sabe cuánto tiempo tiene cada paso en cada país.', en: 'The process already knows how much time each step has in each country.' } },
+      ],
+      comoAcerca: {
+        es: 'Permite ordenar los casos por nivel de impacto y enfocarnos en “los delitos que más les importan”.',
+        en: 'It lets us order cases by level of impact and focus on “the crimes that matter most to them”.',
+      },
+      detalle: { label: { es: '14 de 121 · 11,6%', en: '14 of 121 · 11.6%' },
+        ids: ['MX-042','MX-044','MX-051','MX-027','MX-040','CL-032','CL-033','CL-029','CL-027','CL-008','CL-028','CL-035','CO-002','CO-003'] },
     },
     {
       n: 9, zona: 'trans', pct: '5,0%', entradas: 6, icono: 'movil',
@@ -329,6 +347,7 @@ window.V2 = (function () {
     huella:     '<path d="M12 11a2 2 0 0 1 2 2c0 2.5-.4 5-1.2 7"/><path d="M8.5 20.5A14 14 0 0 0 10 13a2 2 0 0 1 4 0c0 1.2-.1 2.4-.3 3.5"/><path d="M5.5 17.5A17 17 0 0 0 6.5 13a5.5 5.5 0 0 1 9.4-3.9"/><path d="M18 15.5c.3-1.6.4-2.6.4-2.5A6.4 6.4 0 0 0 9 7.3"/><path d="M4 9.5A9 9 0 0 1 19.6 8"/>',
     sincro:     '<path d="M20.5 11a8.5 8.5 0 0 0-14.6-5.1L3 8.8"/><path d="M3 4.5v4.6h4.6"/><path d="M3.5 13a8.5 8.5 0 0 0 14.6 5.1L21 15.2"/><path d="M21 19.5v-4.6h-4.6"/>',
     enlace:     '<path d="M10 13a5 5 0 0 0 7.1 0l2.5-2.5a5 5 0 0 0-7.1-7.1L11 4.9"/><path d="M14 11a5 5 0 0 0-7.1 0l-2.5 2.5a5 5 0 0 0 7.1 7.1L13 19.1"/>',
+    proceso:    '<circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="19" cy="18" r="2"/><path d="M7 6h10"/><path d="M5 8v6a4 4 0 0 0 4 4h8"/>',
     balanza:    '<path d="M12 3v18"/><path d="M7 21h10"/><path d="M5 7h14"/><path d="M5 7l-3 6a3 3 0 0 0 6 0z"/><path d="M19 7l3 6a3 3 0 0 1-6 0z"/>',
     movil:      '<rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18.5h2"/><path d="M9.5 6.5h5"/>',
   };
