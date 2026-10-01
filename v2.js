@@ -191,7 +191,11 @@
       b.appendChild(el('span', 'fn-caja-t', t(c.t)));
       b.appendChild(el('span', 'fn-caja-s', t(c.s)));
       b.addEventListener('click', () => selZona(activeZ === c.z ? null : c.z));
-      if (c.n === 3) b.classList.add('fuente');
+      if (c.n === 3) {
+        // La causa es el cuadro que hay que mirar: va marcado siempre.
+        b.classList.add('fuente');
+        b.appendChild(el('span', 'fn-caja-tag', U('laFuente')));
+      }
       row.appendChild(b);
     });
     wrap.appendChild(row);

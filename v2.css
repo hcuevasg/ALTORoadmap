@@ -110,20 +110,30 @@
 .fn-panel-t { margin: 0; font-size: 1.15rem; color: var(--text); }
 .fn-reset { margin-left: auto; font-family: var(--font); font-size: 0.78rem; font-weight: 700; color: var(--primary); background: none; border: 1px solid rgba(64,115,184,0.3); border-radius: 20px; padding: 5px 13px; cursor: pointer; transition: background 0.2s ease, color 0.2s ease; }
 .fn-reset:hover { background: var(--primary); color: var(--white); }
-.fn-mps { display: grid; grid-template-columns: repeat(auto-fit, minmax(235px, 1fr)); gap: 10px; }
+.fn-mps { display: grid; grid-template-columns: repeat(auto-fit, minmax(178px, 1fr)); gap: 9px; }
 .fn-mp { display: flex; flex-direction: column; gap: 4px; text-align: left; font-family: var(--font); cursor: pointer; background: var(--white); border: 1px solid rgba(64,115,184,0.22); border-radius: 12px; padding: 12px 14px; transition: transform 0.16s ease, box-shadow 0.18s ease, border-color 0.2s ease; }
 @keyframes fnMpEntra { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 .fn-card.abierto .fn-mp { animation: fnMpEntra 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) both; animation-delay: var(--d, 0ms); }
 .fn-mp:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); border-color: var(--primary); }
 .fn-mp:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
 .fn-mp-id { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.05em; color: var(--secondary); }
-.fn-mp-name { font-size: 0.98rem; font-weight: 700; color: var(--text); line-height: 1.25; }
+.fn-mp-name { font-size: 0.92rem; font-weight: 700; color: var(--text); line-height: 1.25; }
 .fn-mp-rol { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.45; }
 .fn-panel-note { margin: 14px 0 0; font-size: 0.88rem; color: var(--text-secondary); font-style: italic; }
 
-/* La causa como fuente: la caja 3 destacada y un pie que lo dice. */
-.fn-caja.fuente { border-color: var(--primary); background: rgba(64,115,184,0.07); box-shadow: 0 0 0 3px rgba(64,115,184,0.12); }
-.fn-caja.fuente .fn-caja-n { border-color: var(--primary); color: var(--primary); }
+/* La causa es el cuadro más importante de la lámina: va marcado siempre, con
+   borde y anillo propios y un rótulo. El relleno lo sigue mandando el estado
+   activo —si no, al encenderse la zona quedaba con texto blanco sobre claro. */
+.fn-caja.fuente { border-width: 2px; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(64,115,184,0.16); }
+.fn-caja.fuente:not(.active) { background: rgba(64,115,184,0.08); }
+.fn-caja.fuente.active { box-shadow: 0 0 0 3px rgba(64,115,184,0.38); }
+.fn-caja.fuente:not(.active) .fn-caja-n { border-color: var(--primary); color: var(--primary); }
+.fn-caja-tag {
+  position: absolute; top: -9px; right: 10px;
+  font-size: 0.56rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--white); background: var(--primary); border-radius: 20px; padding: 3px 9px;
+  white-space: nowrap; pointer-events: none;
+}
 .fn-fuente-pie { margin: 14px 0 0; text-align: center; font-size: 0.86rem; line-height: 1.45; color: var(--text-secondary); }
 .fn-fuente-pie strong { color: var(--primary); font-weight: 800; }
 
@@ -134,20 +144,61 @@
 .objetivo-note { font-size: 0.9rem; color: var(--text-secondary); font-style: italic; margin: 0; }
 
 /* El flujo entero tiene que caber en una pantalla: es la lámina que se
-   presenta y se explica sin hacer scroll. */
+   presenta y se explica sin hacer scroll. Por eso la sección ocupa el alto
+   del viewport y los tamaños y espacios se achican con él — así entra tanto
+   en un portátil chico como en una pantalla de sala. */
 #flujo { padding-top: 88px; padding-bottom: 44px; }
 #flujo .section-head { margin-bottom: 20px; }
 #flujo .section-head h2 { font-size: clamp(1.55rem, 3.1vw, 2.25rem); margin-bottom: 10px; }
 #flujo .section-head .lead { font-size: 0.97rem; line-height: 1.55; max-width: 780px; }
-#flujo .flow-nav { padding: 18px 20px 16px; }
-#flujo .fn-panel { margin-top: 14px; padding-top: 14px; }
-#flujo .objetivo-band { margin-top: 18px; padding: 16px 26px; max-width: 980px; }
-#flujo .objetivo-label { margin-bottom: 7px; }
-#flujo .objetivo-text { font-size: clamp(0.92rem, 1.5vw, 1.02rem); line-height: 1.5; margin-bottom: 6px; }
-#flujo .objetivo-note { font-size: 0.84rem; }
-@media (min-height: 760px) and (min-width: 1061px) {
-  #flujo { min-height: 100vh; display: flex; align-items: center; }
+
+@media (min-width: 1061px) {
+  #flujo {
+    min-height: 100svh; display: grid; align-content: safe center;
+    padding-top: calc(var(--header-h) + 1.6vh);
+    padding-bottom: 2vh;
+  }
   #flujo > .container { width: 100%; }
+
+  #flujo .section-head { margin-bottom: clamp(10px, 2vh, 22px); }
+  #flujo .section-head .kicker { margin-bottom: clamp(4px, 0.8vh, 8px); }
+  #flujo .section-head h2 { font-size: clamp(1.2rem, 3.3vh, 2.25rem); margin-bottom: clamp(4px, 1vh, 10px); }
+  #flujo .section-head .lead { font-size: clamp(0.8rem, 1.65vh, 0.97rem); line-height: 1.5; }
+
+  #flujo .flow-nav { padding: clamp(11px, 1.8vh, 20px) 20px clamp(9px, 1.5vh, 17px); }
+  #flujo .fn-arcs { margin-bottom: clamp(5px, 1vh, 10px); }
+  #flujo .fn-arc { padding: clamp(3px, 0.7vh, 6px) 10px; font-size: clamp(0.56rem, 1.1vh, 0.65rem); }
+  #flujo .fn-caja { padding: clamp(9px, 1.4vh, 14px) 11px clamp(8px, 1.2vh, 12px); }
+  #flujo .fn-caja-t { font-size: clamp(0.78rem, 1.65vh, 0.92rem); }
+  #flujo .fn-caja-s { font-size: clamp(0.63rem, 1.3vh, 0.74rem); }
+  #flujo .fn-caja-n { width: clamp(20px, 3.4vh, 26px); height: clamp(20px, 3.4vh, 26px); font-size: clamp(0.6rem, 1.25vh, 0.72rem); }
+  #flujo .fn-caja:not(:last-child)::after { top: clamp(19px, 3.1vh, 27px); }
+
+  #flujo .fn-fuente-pie { margin-top: clamp(7px, 1.4vh, 14px); font-size: clamp(0.72rem, 1.45vh, 0.86rem); }
+  #flujo .fn-band { margin-top: clamp(8px, 1.5vh, 14px); padding: clamp(6px, 1.2vh, 11px) 15px; }
+  #flujo .fn-panel { margin-top: clamp(8px, 1.5vh, 18px); padding-top: clamp(8px, 1.5vh, 18px); }
+  #flujo .fn-panel-head { margin-bottom: clamp(7px, 1.3vh, 14px); }
+  #flujo .fn-mp { padding: clamp(7px, 1.3vh, 12px) 14px; }
+  #flujo .fn-mp-rol { font-size: clamp(0.72rem, 1.45vh, 0.85rem); }
+  #flujo .fn-panel-note { margin-top: clamp(7px, 1.3vh, 14px); font-size: clamp(0.74rem, 1.45vh, 0.88rem); }
+  #flujo .fn-card-body { max-height: 34vh; }
+
+  #flujo .objetivo-band { margin-top: clamp(10px, 2vh, 22px); padding: clamp(10px, 1.7vh, 18px) 26px; max-width: 980px; }
+  #flujo .objetivo-label { margin-bottom: clamp(4px, 0.8vh, 8px); }
+  #flujo .objetivo-text { font-size: clamp(0.82rem, 1.85vh, 1.02rem); line-height: 1.45; margin-bottom: clamp(3px, 0.7vh, 7px); }
+  #flujo .objetivo-note { font-size: clamp(0.7rem, 1.35vh, 0.84rem); }
+
+  /* El panel tiene que entrar junto con todo lo demás: el rol se limita a dos
+     líneas y la nota y el objetivo van más apretados. */
+  #flujo .fn-mp-rol {
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+    overflow: hidden; line-height: 1.35;
+  }
+  #flujo .fn-panel-note { font-size: clamp(0.68rem, 1.3vh, 0.8rem); line-height: 1.4; }
+  #flujo .fn-mps { gap: clamp(6px, 1vh, 9px); }
+  #flujo .objetivo-text { line-height: 1.4; }
+  #flujo .objetivo-note { display: none; }
+  #flujo .section-head .lead { font-size: clamp(0.78rem, 1.55vh, 0.93rem); }
 }
 
 /* ============================================================

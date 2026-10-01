@@ -463,6 +463,7 @@ window.V2 = (function () {
     // Flujo
     fnHint:   { es: 'Pulsa una caja del flujo —o la banda transversal— para ver qué macroproyectos la construyen.', en: 'Click a box in the flow —or the cross-cutting band— to see which macroprojects build it.' },
     verNueve: { es: 'Ver los nueve', en: 'Show all nine' },
+    laFuente:    { es: 'La certeza', en: 'The certainty' },
     certezaAca:  { es: 'La certeza está acá.', en: 'The certainty sits here.' },
     certezaAcaD: { es: 'Desde la causa —los registros de la fiscalía y el tribunal— se completan el evento, el sujeto y el resultado.', en: 'From the case —the records of the prosecutor’s office and the court— the event, the subject and the outcome are completed.' },
     bandaTrans: { es: 'Lo transversal · atraviesa las seis cajas', en: 'Cross-cutting · runs through all six boxes' },
