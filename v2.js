@@ -61,22 +61,13 @@
     'footer.date': 'September 2026',
     'footer.conf': 'Internal Use & Confidential',
 
-    // --- alliance.html ---
-    'al.kicker': 'Built from the bottom up',
-    'al.h2': 'Alliance<br /><span class="al-h2-sub">Legal Operations Hub</span>',
-    'al.lead': 'The base comes first: event, subject, case and outcome. With those four boxes resolved the pattern becomes reachable, and from the pattern the recommendation. The cross-cutting macroprojects hold up the whole building.',
-    'al.footerLink': 'Back to the presentation',
   };
 
   const CEO_TEXT = {
     es: 'La plataforma legal no puede ser solo un registro. Tiene que ser una plataforma de gestión legal: ahí está nuestro core, de ahí nace el dato y eso es lo que hace único a ALTO.',
     en: 'The legal platform cannot be just a record. It has to be a legal management platform: that is where our core is, that is where the data is born, and that is what makes ALTO unique.',
   };
-  // Dos páginas comparten este script; el título depende de cuál se cargó.
-  const ES_ALLIANCE = !!document.getElementById('allianceMap');
-  const META = ES_ALLIANCE
-    ? { es: 'Alliance · Central de Operaciones Legales', en: 'Alliance · Legal Operations Hub' }
-    : { es: 'Presentación ejecutiva · Roadmap Gestión Legal ALTO', en: 'Executive presentation · ALTO Legal Management Roadmap' };
+  const META = { es: 'Presentación ejecutiva · Roadmap Gestión Legal ALTO', en: 'Executive presentation · ALTO Legal Management Roadmap' };
 
   let lang = (function () { try { return localStorage.getItem('alto_lang') || 'es'; } catch (e) { return 'es'; } })();
   const t = (o) => (o ? (o[lang] != null ? o[lang] : o.es) : '');
@@ -695,100 +686,6 @@
   }
 
   // ============================================================
-  //  Alliance, central de operaciones legales (lámina 10)
-  //  Se dibuja de abajo hacia arriba, con el texto y las posiciones
-  //  de la lámina. Aquí no se reinterpreta nada: solo se diseña.
-  // ============================================================
-  function bloqueMP(c) {
-    const agr = D.AGREGADOS.filter((a) => a.mp === c.mp);
-    const b = el('div', 'al-mp' + (agr.length ? ' con-agr' : ''));
-    const head = el('div', 'al-mp-head');
-    head.appendChild(el('span', 'al-mp-id', 'MP' + c.mp));
-    if (agr.length) head.appendChild(el('span', 'al-mp-mas', '+' + agr.length));
-    b.appendChild(head);
-    b.appendChild(el('span', 'al-mp-lab', t(c.lab)));
-    if (agr.length) {
-      const list = el('ul', 'al-mp-agr');
-      agr.forEach((a) => list.appendChild(el('li', null, t(a.t))));
-      b.appendChild(list);
-    }
-    return b;
-  }
-
-  function renderAlliance() {
-    const host = $('#allianceMap');
-    if (!host) return;
-    const A = D.ALLIANCE;
-    host.textContent = '';
-
-    // --- cima: socio estratégico ---
-    const cima = el('section', 'al-piso al-cima');
-    const ch = el('div', 'al-piso-head');
-    ch.appendChild(el('h3', 'al-piso-t', t(A.cima.t)));
-    ch.appendChild(el('span', 'al-piso-s', t(A.cima.s)));
-    cima.appendChild(ch);
-
-    const cCajas = el('div', 'al-cajas dos');
-    A.cima.cajas.forEach((c) => {
-      const box = el('div', 'al-caja alta');
-      box.appendChild(el('span', 'al-caja-n', 'Caja ' + c.n));
-      box.appendChild(el('span', 'al-caja-t', t(c.t)));
-      box.appendChild(el('span', 'al-caja-s', t(c.s)));
-      cCajas.appendChild(box);
-    });
-    cima.appendChild(cCajas);
-
-    const cCon = el('div', 'al-con');
-    cCon.appendChild(el('span', 'al-con-label', U('conQue')));
-    const cList = el('div', 'al-mps');
-    A.cima.con.forEach((c) => cList.appendChild(bloqueMP(c)));
-    cCon.appendChild(cList);
-    cima.appendChild(cCon);
-    host.appendChild(cima);
-
-    // --- puente ---
-    const puente = el('div', 'al-puente');
-    puente.appendChild(el('span', 'al-puente-flecha', '▲'));
-    puente.appendChild(el('span', 'al-puente-t', t(A.cima.puente)));
-    host.appendChild(puente);
-
-    // --- base estructurada ---
-    const base = el('section', 'al-piso al-base');
-    const bh = el('div', 'al-piso-head');
-    bh.appendChild(el('h3', 'al-piso-t', t(A.base.t)));
-    bh.appendChild(el('span', 'al-piso-s', t(A.base.s)));
-    base.appendChild(bh);
-
-    const bCajas = el('div', 'al-cajas cuatro');
-    A.base.cajas.forEach((c) => {
-      const box = el('div', 'al-caja');
-      box.appendChild(el('span', 'al-caja-n', String(c.n)));
-      box.appendChild(el('span', 'al-caja-t', t(c.t)));
-      bCajas.appendChild(box);
-    });
-    base.appendChild(bCajas);
-
-    const bCon = el('div', 'al-con');
-    bCon.appendChild(el('span', 'al-con-label', U('conQue')));
-    const bList = el('div', 'al-mps');
-    A.base.con.forEach((c) => bList.appendChild(bloqueMP(c)));
-    bCon.appendChild(bList);
-    base.appendChild(bCon);
-    host.appendChild(base);
-
-    // --- cimiento transversal ---
-    const trans = el('section', 'al-piso al-trans');
-    trans.appendChild(el('span', 'al-con-label', U('transversales')));
-    const tList = el('div', 'al-mps');
-    A.transversales.forEach((c) => tList.appendChild(bloqueMP(c)));
-    trans.appendChild(tList);
-    host.appendChild(trans);
-
-    const cierre = $('#alCierre');
-    if (cierre) cierre.textContent = t(A.cierre);
-  }
-
-  // ============================================================
   //  Idioma: aplicar y re-renderizar
   // ============================================================
   function aplicarEstatico() {
@@ -816,7 +713,6 @@
     renderAgregados();
     renderMatriz();
     renderGana();
-    renderAlliance();
   }
 
   function setLang(next) {

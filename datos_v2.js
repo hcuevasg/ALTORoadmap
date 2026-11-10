@@ -4,8 +4,7 @@
 //
 //  Fuente: borrador "Flujo_MP_socio_estratégico_ALTO v2.7".
 //  Orden acordado en la reunión del 30/09/2026:
-//    lámina 4 → los nueve macroproyectos → lámina 9 → 11 → 12
-//    y la lámina 10 en una pestaña aparte (alliance.html).
+//    lámina 4 → los nueve macroproyectos → lámina 9 → 11 → 12.
 //
 //  Cada texto es { es, en }. Nada de contenido en el HTML: todo vive aquí
 //  para poder corregirlo en un solo lugar.
@@ -479,52 +478,6 @@ window.V2 = (function () {
     },
   ];
 
-  // ---- Alliance, central de operaciones legales (lámina 10) ----
-  // Se construye de abajo hacia arriba. Texto y posiciones tal como están en
-  // la lámina: aquí no se reinterpreta nada, solo se diseña. Por eso `lab`
-  // repite el rótulo exacto que usa la lámina 10 para cada macroproyecto,
-  // que en algunos casos es más corto que el título formal.
-  const ALLIANCE = {
-    cima: {
-      t: { es: 'Socio estratégico', en: 'Strategic partner' },
-      s: { es: 'lo que queremos ser', en: 'what we want to be' },
-      cajas: [
-        { n: 5, t: { es: 'Patrón', en: 'Pattern' }, s: { es: 'Qué se repite', en: 'What repeats' } },
-        { n: 6, t: { es: 'Recomendación', en: 'Recommendation' }, s: { es: 'Qué conviene hacer', en: 'What should be done' } },
-      ],
-      con: [
-        { mp: 6, lab: { es: 'Inteligencia criminal y gestión integral del infractor', en: 'Criminal intelligence and comprehensive offender management' } },
-        { mp: 2, lab: { es: 'Reportería, dashboards y autoservicio', en: 'Reporting, dashboards and self-service' } },
-      ],
-      puente: { es: 'Con las cuatro cajas resueltas se llega al patrón', en: 'With the four boxes resolved, the pattern becomes reachable' },
-    },
-    base: {
-      t: { es: 'La base estructurada', en: 'The structured base' },
-      s: { es: 'lo que hoy define a ALTO', en: 'what defines ALTO today' },
-      cajas: [
-        { n: 1, t: { es: 'Evento', en: 'Event' } },
-        { n: 2, t: { es: 'Sujeto', en: 'Subject' } },
-        { n: 3, t: { es: 'Causa', en: 'Case' } },
-        { n: 4, t: { es: 'Resultado', en: 'Outcome' } },
-      ],
-      con: [
-        { mp: 8, lab: { es: 'Gestión de causas y procedimiento', en: 'Case management and procedure' } },
-        { mp: 7, lab: { es: 'Integraciones externas', en: 'External integrations' } },
-        { mp: 5, lab: { es: 'Automatización documental e IA', en: 'Document automation and AI' } },
-        { mp: 4, lab: { es: 'Gestión documental y evidencia', en: 'Document management and evidence' } },
-        { mp: 3, lab: { es: 'Gestión operativa integral', en: 'Comprehensive operational management' } },
-      ],
-    },
-    transversales: [
-      { mp: 1, lab: { es: 'Gobierno, calidad y estandarización del dato', en: 'Data governance, quality and standardization' } },
-      { mp: 9, lab: { es: 'Condiciones habilitantes: tecnología, arquitectura, seguridad y escalabilidad', en: 'Enabling conditions: technology, architecture, security and scalability' } },
-    ],
-    cierre: {
-      es: 'Los doce proyectos agregados no son una capa nueva: le dan profundidad a los macroproyectos que ya existen.',
-      en: 'The twelve added projects are not a new layer: they give depth to the macroprojects that already exist.',
-    },
-  };
-
   // ---- Rótulos de interfaz ----
   const UI = {
     // Navegación
@@ -533,7 +486,6 @@ window.V2 = (function () {
     navAgregar: { es: 'Qué falta', en: "What's missing" },
     navPide:    { es: 'Qué se pide', en: 'What is asked' },
     navGana:    { es: 'Qué se gana', en: 'What is gained' },
-    navAlliance:{ es: 'Alliance', en: 'Alliance' },
     navRespaldo:{ es: 'Versión completa', en: 'Full version' },
 
     // Flujo
@@ -587,10 +539,7 @@ window.V2 = (function () {
     elResultado:{ es: 'El resultado', en: 'The result' },
     queMedir:   { es: 'Qué mediríamos', en: 'What we would measure' },
 
-    // Alliance
-    conQue: { es: 'Con qué se construye', en: 'What it is built with' },
-    transversales: { es: 'Transversales', en: 'Cross-cutting' },
   };
 
-  return { CAJAS, ZONAS, MP, ICONOS, AGREGADOS, BENEFICIOS, BLOQUES, GANANCIAS, ALLIANCE, UI };
+  return { CAJAS, ZONAS, MP, ICONOS, AGREGADOS, BENEFICIOS, BLOQUES, GANANCIAS, UI };
 })();
