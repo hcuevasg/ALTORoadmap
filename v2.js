@@ -24,8 +24,6 @@
     'flag.mx': 'Mexico', 'flag.co': 'Colombia', 'flag.cl': 'Chile', 'flag.us': 'United States',
     'hero.tagDate': 'November 2026',
     'hero.tagConf': 'Internal Use & Confidential',
-    'hero.presenterName': 'Project sponsor: Roberto Carrasco',
-    'hero.presenterRole': '',
 
     'marquee': '<span>Single platform</span><i>•</i><span>Common model</span><i>•</i><span>Operational intelligence</span><i>•</i><span>Governed data</span><i>•</i><span>Scalability</span><i>•</i><span>Traceability</span><i>•</i><span>Single platform</span><i>•</i><span>Common model</span><i>•</i><span>Operational intelligence</span><i>•</i><span>Governed data</span><i>•</i><span>Scalability</span><i>•</i><span>Traceability</span><i>•</i>',
     'ceo.role': 'Jorge Nazer · President, ALTO',
