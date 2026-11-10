@@ -489,7 +489,7 @@ window.V2 = (function () {
     verNueve: { es: 'Ver los nueve', en: 'Show all nine' },
     laFuente:    { es: 'La certeza', en: 'The certainty' },
     certezaAca:  { es: 'La certeza está acá.', en: 'The certainty sits here.' },
-    certezaAcaD: { es: 'Desde la causa (los registros de la fiscalía y el tribunal) se completan el evento, el sujeto y el resultado.', en: 'From the case (the records of the prosecutor’s office and the court) the event, the subject and the outcome are completed.' },
+    certezaAcaD: { es: 'Con los registros oficiales de la causa se completan el evento, el sujeto y el resultado.', en: 'The official records of the case complete the event, the subject and the outcome.' },
     bandaTrans: { es: 'Lo transversal · atraviesa las seis cajas', en: 'Cross-cutting · runs through all six boxes' },
 
     // Tarjetas
