@@ -96,7 +96,7 @@ window.V2 = (function () {
       },
       ganamos: [
         { t: { es: 'Decisiones bien tomadas', en: 'Well-made decisions' }, d: { es: 'El cliente y la gerencia deciden con nuestros números. Si el número está malo, la decisión también.', en: 'The client and management decide using our numbers. If the number is wrong, so is the decision.' } },
-        { t: { es: 'Credibilidad', en: 'Credibility' }, d: { es: 'Lo que le informamos al cliente es lo mismo que consta en la justicia. Nuestras cifras resisten cualquier revisión.', en: 'What we report to the client is the same as what the courts hold on record. Our figures withstand any review.' } },
+        { t: { es: 'Información verificada', en: 'Verified information' }, d: { es: 'Lo que le informamos al cliente es lo mismo que consta en la justicia. Nuestras cifras resisten cualquier revisión.', en: 'What we report to the client is the same as what the courts hold on record. Our figures withstand any review.' } },
         { t: { es: 'Análisis de verdad', en: 'Real analysis' }, d: { es: 'La estrategia nos pide trabajar “con inteligencia y análisis”. No hay análisis posible sobre información incorrecta.', en: 'The strategy asks us to work “with intelligence and analysis”. No analysis is possible on incorrect information.' } },
       ],
       comoAcerca: {
