@@ -134,7 +134,7 @@ window.I18N = (function () {
     'tl32.prod': 'Integrate what was gathered and draft the Common Minimums Document: what is standardized as a corporate minimum and what is kept as local configuration, with its prioritization.',
     'tl33.h3': 'Final agreement review', 'tl33.date': 'Jul 22–Aug 13', 'tl33.owner': 'IT Committee',
     'tl33.prod': 'Formal review and validation of the agreement by the Committee (CEO · CFO · CTO · Country Managers). Its closing enables Phase 4.',
-    'tl4.h3': 'Start of Planning', 'tl4.date': 'from October 2 to December 15', 'tl4.owner': 'IT Sponsor',
+    'tl4.h3': 'Start of Planning', 'tl4.date': 'Oct 02–Dec 15', 'tl4.owner': 'IT Sponsor',
     'tl4.prod': 'On the agreed common minimums, build the technical roadmap and the final implementation schedule.',
     'tl.closer': 'The roadmap’s end date will be defined in Phase 4. <strong>The Common Minimums Agreement is the formal basis of all corporate planning for the unified platform.</strong>',
 
