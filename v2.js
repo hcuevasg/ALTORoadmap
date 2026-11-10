@@ -16,7 +16,7 @@
   //  vuelve a renderizar al cambiar de idioma.
   // ============================================================
   const EN = {
-    'hero.eyebrow': 'Executive presentation',
+    'hero.eyebrow': 'Ampliado Chile 2026',
     'hero.title': 'Unified Development<br />Roadmap',
     'hero.legal': '<span class="accent">Legal Management</span> ALTO',
     'hero.sub': 'Where the information comes from, what has to be built to have it, and what each operation gains once it does.',
