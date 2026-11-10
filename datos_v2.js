@@ -206,7 +206,7 @@ window.V2 = (function () {
       corto: { es: 'Automatización e IA legal', en: 'Legal automation & AI' },
       rol: { es: 'Construye la base, pero entra después: no es condición de partida.', en: 'Also builds the base, but comes later: it is not a starting condition.' },
       esencia: { es: 'El escrito sale solo', en: 'The brief writes itself' },
-      titulo: { es: 'Los escritos de trámite, listos desde el sistema', en: 'Routine filings, ready from the system' },
+      titulo: { es: 'El escrito, a un clic', en: 'The filing, one click away' },
       gancho: { es: 'El sistema arma lo repetitivo. El abogado firma y se dedica a lo importante.', en: 'The system assembles what repeats. The lawyer signs and gets on with what matters.' },
       frecuencia: { es: 'Lo pidieron los tres países · 1 de cada 15 problemas', en: 'Requested by all three countries · 1 in every 15 problems' },
       paises: { es: 'México, Chile, Colombia', en: 'Mexico, Chile, Colombia' },
