@@ -87,8 +87,8 @@ window.V2 = (function () {
       frecuencia: { es: '1 de cada 7 problemas', en: '1 in every 7 problems' },
       paises: { es: 'México, Chile, Colombia', en: 'Mexico, Chile, Colombia' },
       queNosPasa: {
-        es: 'La información está incompleta, mal escrita, atrasada, sin reglas comunes y sin responsable. Cuando el sistema no tiene dónde registrar algo, o es lento, cada equipo arma su propia versión en archivos, chats y correos aparte, y la información se divide todavía más. Una misma persona aparece varias veces y un mismo caso dice cosas distintas según dónde se mire. Es tan grave que ni siquiera podemos ver quién vuelve a delinquir.',
-        en: 'The information is incomplete, badly written, out of date, without common rules and without an owner. When the system has nowhere to record something, or is slow, each team builds its own version in separate files, chats and emails, and the information fragments further. The same person appears several times and the same case says different things depending on where you look. It is so serious that we cannot even see who is reoffending.',
+        es: 'Los datos están incompletos, desactualizados y repartidos entre el sistema, planillas, chats y correos, sin reglas ni responsable. Por eso hay personas duplicadas, casos contradictorios y no sabemos quién reincide.',
+        en: 'The data is incomplete, out of date and scattered across the system, spreadsheets, chats and emails, with no rules and no owner. That is why there are duplicate people, contradictory cases and we cannot tell who reoffends.',
       },
       laClave: {
         es: 'Está en la causa, es decir, en los registros de la fiscalía y el tribunal. Desde ahí se completan el evento, el sujeto y el resultado.',
