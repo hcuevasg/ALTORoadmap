@@ -167,6 +167,12 @@ h3 { font-size: 1.4rem; font-weight: 600; }
   padding: 14px 32px; border-radius: var(--radius); border: 2px solid transparent;
   cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
 }
+/* Barra del header: todo a la misma altura. Va después de .btn porque esa regla
+   general les ponía padding de botón grande y los estiraba. */
+.nav-actions .btn { height: 34px; padding: 0 13px; border-width: 1px; border-radius: 9px; font-size: 0.82rem; }
+.nav-actions .header-glosario, .nav-actions .header-tax { width: 34px; padding: 0; }
+.nav-actions .lang-toggle { height: 34px; }
+.nav-actions .lang-toggle button { height: 100%; }
 .btn-primary { background: var(--secondary); color: var(--white); box-shadow: 0 8px 24px rgba(231, 66, 67, 0.28); }
 .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(231, 66, 67, 0.4); }
 .btn-ghost { background: transparent; color: var(--text); border-color: var(--accent); }
