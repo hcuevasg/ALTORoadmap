@@ -30,6 +30,7 @@ window.I18N = (function () {
 
     'marquee': '<span>Single platform</span><i>•</i><span>Common model</span><i>•</i><span>Operational intelligence</span><i>•</i><span>Governed data</span><i>•</i><span>Scalability</span><i>•</i><span>Traceability</span><i>•</i><span>Single platform</span><i>•</i><span>Common model</span><i>•</i><span>Operational intelligence</span><i>•</i><span>Governed data</span><i>•</i><span>Scalability</span><i>•</i><span>Traceability</span><i>•</i>',
     'ceo.date': 'Thursday, June 11, 2026',
+    'ceo.role': 'Jorge Nazer · President, ALTO',
 
     'ctx.h2': 'The strategic objective',
     'ctx.band': 'Enable a single legal-management platform for the countries where ALTO operates, avoiding country-specific versions and consolidating a common model that allows us to <strong>capture impact</strong>, <strong>activate cross-cutting opportunities</strong> and <strong>scale the best practices and operational intelligence</strong> developed by the teams.',
