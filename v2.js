@@ -35,7 +35,7 @@
     'flujo.h2': 'From information to decision',
     'flujo.lead': 'Today the certainty sits in <strong>the case</strong>. From there the event, the subject and the outcome are completed. Only with those four boxes filled do the pattern and the recommendation appear.',
     'obj.label': 'The objective',
-    'obj.text': '“To be our clients’ trusted, strategic partner, helping them prevent and prosecute — with intelligence and analysis — the crimes that matter most to them, so that together we build safer communities.”',
+    'obj.text': '“To be our clients’ trusted, strategic partner, helping them prevent and prosecute with intelligence and analysis the crimes that matter most to them, so that together we build safer communities.”',
     'obj.note': 'The full chain is the operational answer to “with intelligence and analysis”.',
 
     'macro.kicker': 'From 117 gaps to a structure',
@@ -645,7 +645,7 @@
         c.style.setProperty('--v', v / 100);
         c.appendChild(el('span', 'mtz-v-num', v + '%'));
         c.appendChild(el('span', 'mtz-v-ben', t(b.t)));
-        c.title = t(b.t) + ' — ' + v + '% ' + U('deLasBrechas');
+        c.title = t(b.t) + ': ' + v + '% ' + U('deLasBrechas');
         row.appendChild(c);
       });
       tabla.appendChild(row);

@@ -92,7 +92,7 @@ window.V2 = (function () {
       },
       laClave: {
         es: 'Está en la causa, es decir, en los registros de la fiscalía y el tribunal. Desde ahí se completan el evento, el sujeto y el resultado.',
-        en: 'It is in the case — that is, in the records of the prosecutor’s office and the court. From there the event, the subject and the outcome are completed.',
+        en: 'It is in the case, that is, in the records of the prosecutor’s office and the court. From there the event, the subject and the outcome are completed.',
       },
       ganamos: [
         { t: { es: 'Decisiones bien tomadas', en: 'Well-made decisions' }, d: { es: 'El cliente y la gerencia deciden con nuestros números. Si el número está malo, la decisión también.', en: 'The client and management decide using our numbers. If the number is wrong, so is the decision.' } },
@@ -485,11 +485,11 @@ window.V2 = (function () {
     navRespaldo:{ es: 'Versión completa', en: 'Full version' },
 
     // Flujo
-    fnHint:   { es: 'Pulsa una caja del flujo —o la banda transversal— para ver qué macroproyectos la construyen.', en: 'Click a box in the flow —or the cross-cutting band— to see which macroprojects build it.' },
+    fnHint:   { es: 'Pulsa una caja del flujo o la banda transversal para ver qué macroproyectos la construyen.', en: 'Click a box in the flow or the cross-cutting band to see which macroprojects build it.' },
     verNueve: { es: 'Ver los nueve', en: 'Show all nine' },
     laFuente:    { es: 'La certeza', en: 'The certainty' },
     certezaAca:  { es: 'La certeza está acá.', en: 'The certainty sits here.' },
-    certezaAcaD: { es: 'Desde la causa —los registros de la fiscalía y el tribunal— se completan el evento, el sujeto y el resultado.', en: 'From the case —the records of the prosecutor’s office and the court— the event, the subject and the outcome are completed.' },
+    certezaAcaD: { es: 'Desde la causa (los registros de la fiscalía y el tribunal) se completan el evento, el sujeto y el resultado.', en: 'From the case (the records of the prosecutor’s office and the court) the event, the subject and the outcome are completed.' },
     bandaTrans: { es: 'Lo transversal · atraviesa las seis cajas', en: 'Cross-cutting · runs through all six boxes' },
 
     // Tarjetas
