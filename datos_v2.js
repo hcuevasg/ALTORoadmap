@@ -32,10 +32,6 @@ window.V2 = (function () {
       mps: [3, 4, 7, 8, 5],
       arco: { es: 'Mejorar el presente', en: 'Improve the present' },
       t: { es: 'La base estructurada', en: 'The structured base' },
-      nota: {
-        es: 'Las cuatro cajas de la base se construyen con los mismos cinco macroproyectos: el borrador los asigna al bloque completo, no caja por caja. MP5 construye también, pero entra después: no es condición de partida.',
-        en: 'The four base boxes are built by the same five macroprojects: the draft assigns them to the block as a whole, not box by box. MP5 also builds, but comes later: it is not a starting condition.',
-      },
     },
     patron: {
       mps: [6],

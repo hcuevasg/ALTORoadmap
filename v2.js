@@ -141,7 +141,7 @@
         grid.appendChild(chip);
       });
       body.appendChild(grid);
-      body.appendChild(el('p', 'fn-panel-note', t(z.nota)));
+      if (z.nota) body.appendChild(el('p', 'fn-panel-note', t(z.nota)));
       card.appendChild(body);
 
       persp.appendChild(card);
