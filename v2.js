@@ -31,7 +31,7 @@
     'ceo.role': 'Jorge Nazer · President, ALTO',
     'ceo.date': 'Thursday, June 11, 2026',
 
-    'flujo.kicker': 'ALTO’s strategy, in six boxes',
+    'flujo.kicker': 'ALTO’s strategy in six boxes',
     'flujo.h2': 'From information to decision',
     'flujo.lead': 'Today the certainty sits in <strong>the case</strong>. From there the event, the subject and the outcome are completed — and only with those four boxes filled do the pattern and the recommendation appear.',
     'obj.label': 'The objective',
