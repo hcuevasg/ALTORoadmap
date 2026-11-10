@@ -24,11 +24,9 @@ window.I18N = (function () {
     'hero.legal': '<span class="accent">Legal Management</span> ALTO',
     'hero.sub': 'Consolidated Gaps and Macroprojects. From 117 gaps raised to nine macroprojects that steer a regional legal-tech roadmap.',
     'hero.flagsLabel': 'A regional operation',
-    'flag.mx': 'Mexico', 'flag.co': 'Colombia', 'flag.cl': 'Chile', 'flag.us': 'United States', 'flag.es': 'Spain',
-    'hero.tagDate': 'June 2026',
+    'flag.mx': 'Mexico', 'flag.co': 'Colombia', 'flag.cl': 'Chile', 'flag.us': 'United States',
+    'hero.tagDate': 'November 2026',
     'hero.tagConf': 'Internal Use & Confidential',
-    'hero.presenterName': 'Project sponsor: Roberto Carrasco',
-    'hero.presenterRole': 'CTO · ALTO',
 
     'marquee': '<span>Single platform</span><i>•</i><span>Common model</span><i>•</i><span>Operational intelligence</span><i>•</i><span>Governed data</span><i>•</i><span>Scalability</span><i>•</i><span>Traceability</span><i>•</i><span>Single platform</span><i>•</i><span>Common model</span><i>•</i><span>Operational intelligence</span><i>•</i><span>Governed data</span><i>•</i><span>Scalability</span><i>•</i><span>Traceability</span><i>•</i>',
     'ceo.date': 'Thursday, June 11, 2026',
@@ -140,7 +138,7 @@ window.I18N = (function () {
     'tl.closer': 'The roadmap’s end date will be defined in Phases 3 and 4. <strong>The Common Minimums Agreement is the formal basis of all corporate planning for the unified platform.</strong>',
 
     'footer.brand': 'Unified Development Roadmap — Legal Management. Agreement working session 3.1: Consolidated Gaps and Macroprojects.',
-    'footer.phase': 'Phase 3: Agreement', 'footer.date': 'June 2026', 'footer.conf': 'Internal Use & Confidential',
+    'footer.phase': 'Phase 3: Agreement', 'footer.date': 'November 2026', 'footer.conf': 'Internal Use & Confidential',
 
     'gl.code': 'Glossary', 'gl.country': 'To read the cards', 'gl.title': 'Operational glossary',
     'gl.list': '<div class="gl"><dt>Event</dt><dd>Section of Alliance where client reports come in; the first link in the service.</dd></div><div class="gl"><dt>Legal case</dt><dd>Created from the event when a lawyer is assigned; the assignment is the trigger that creates it.</dd></div><div class="gl"><dt>Beta / Legacy</dt><dd>Current version and previous version of Alliance; Colombia still runs on Legacy.</dd></div><div class="gl"><dt>Discovery</dt><dd>Alliance’s dashboards and reports layer.</dd></div><div class="gl"><dt>Viewer</dt><dd>Alliance’s expert search tool, oriented to investigating over data sets.</dd></div><div class="gl"><dt>Insights</dt><dd>Configurable alerts: they are requested, BI configures them, and they become automatic.</dd></div><div class="gl"><dt>Datalake</dt><dd>Corporate data repository from which views and data extracts are generated.</dd></div><div class="gl"><dt>Sábana (data extract)</dt><dd>Bulk data export in a spreadsheet, used as a source for reports and control.</dd></div><div class="gl"><dt>Guardia Legal (Legal Guard)</dt><dd>Mexico’s lawyer team that handles events by phone and performs their initial recording.</dd></div><div class="gl"><dt>Offender project</dt><dd>Offender-profile management module under development, with USA as pilot (Stage 1).</dd></div>',
