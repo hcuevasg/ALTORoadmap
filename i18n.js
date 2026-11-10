@@ -19,7 +19,7 @@ window.I18N = (function () {
     'btn.glosario': 'Glossary',
     'btn.taxonomia': 'Taxonomy',
 
-    'hero.eyebrow': 'Phase 3: Agreement',
+    'hero.eyebrow': 'Phase 4: Strategic Planning',
     'hero.title': 'Unified Development<br />Roadmap',
     'hero.legal': '<span class="accent">Legal Management</span> ALTO',
     'hero.sub': 'Consolidated Gaps and Macroprojects. From 117 gaps raised to nine macroprojects that steer a regional legal-tech roadmap.',
@@ -52,12 +52,12 @@ window.I18N = (function () {
 
     'fases.kicker': 'The roadmap',
     'fases.h2': 'Four successive phases',
-    'fases.lead': 'Phase 2 (Comparison) was closed with the consolidation of the 117 gaps. We are in <strong>Phase 3: Agreement</strong>, where the common minimums for unifying the platform are defined.',
+    'fases.lead': 'Phase 3 (Agreement) was closed with the definition of the common minimums for unifying the platform. We are in <strong>Phase 4: Strategic Planning</strong>, where the corporate plan for the platform’s evolution is built.',
     'st.completed': '✓ Completed', 'st.progress': '● In progress', 'st.notstarted': '○ Not started',
     'ph1.h3': 'Assessment', 'ph1.p': 'Current situation (AS-IS) by country. <strong>117 gaps documented.</strong>',
     'ph2.h3': 'Comparison', 'ph2.p': 'Cross-country comparative review and consolidation of the 117 gaps (Report 2.5). <strong>Closed.</strong>',
-    'ph3.h3': 'Agreement', 'ph3.p': 'Definition of the common minimums for unifying the platform. <strong>We are here.</strong>',
-    'ph4.h3': 'Strategic Planning', 'ph4.p': 'Corporate plan for the platform’s evolution over the coming months and years.',
+    'ph3.h3': 'Agreement', 'ph3.p': 'Definition of the common minimums for unifying the platform. <strong>Closed.</strong>',
+    'ph4.h3': 'Strategic Planning', 'ph4.p': 'Corporate plan for the platform’s evolution over the coming months and years. <strong>We are here.</strong>',
 
     'cif.kicker': 'Quantitative scope',
     'cif.h2': '117 raised, 92 shared',
@@ -138,7 +138,7 @@ window.I18N = (function () {
     'tl.closer': 'The roadmap’s end date will be defined in Phases 3 and 4. <strong>The Common Minimums Agreement is the formal basis of all corporate planning for the unified platform.</strong>',
 
     'footer.brand': 'Unified Development Roadmap — Legal Management. Agreement working session 3.1: Consolidated Gaps and Macroprojects.',
-    'footer.phase': 'Phase 3: Agreement', 'footer.date': 'November 2026', 'footer.conf': 'Internal Use & Confidential',
+    'footer.phase': 'Phase 4: Strategic Planning', 'footer.date': 'November 2026', 'footer.conf': 'Internal Use & Confidential',
 
     'gl.code': 'Glossary', 'gl.country': 'To read the cards', 'gl.title': 'Operational glossary',
     'gl.list': '<div class="gl"><dt>Event</dt><dd>Section of Alliance where client reports come in; the first link in the service.</dd></div><div class="gl"><dt>Legal case</dt><dd>Created from the event when a lawyer is assigned; the assignment is the trigger that creates it.</dd></div><div class="gl"><dt>Beta / Legacy</dt><dd>Current version and previous version of Alliance; Colombia still runs on Legacy.</dd></div><div class="gl"><dt>Discovery</dt><dd>Alliance’s dashboards and reports layer.</dd></div><div class="gl"><dt>Viewer</dt><dd>Alliance’s expert search tool, oriented to investigating over data sets.</dd></div><div class="gl"><dt>Insights</dt><dd>Configurable alerts: they are requested, BI configures them, and they become automatic.</dd></div><div class="gl"><dt>Datalake</dt><dd>Corporate data repository from which views and data extracts are generated.</dd></div><div class="gl"><dt>Sábana (data extract)</dt><dd>Bulk data export in a spreadsheet, used as a source for reports and control.</dd></div><div class="gl"><dt>Guardia Legal (Legal Guard)</dt><dd>Mexico’s lawyer team that handles events by phone and performs their initial recording.</dd></div><div class="gl"><dt>Offender project</dt><dd>Offender-profile management module under development, with USA as pilot (Stage 1).</dd></div>',
