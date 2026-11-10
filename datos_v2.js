@@ -173,7 +173,7 @@ window.V2 = (function () {
       rol: { es: 'Extrae y captura datos desde la evidencia.', en: 'Extracts and captures data from evidence.' },
       esencia: { es: 'La fuente oficial', en: 'The official source' },
       titulo: { es: 'Cada caso con sus documentos oficiales', en: 'Every case with its official documents' },
-      gancho: { es: 'Si tenemos la fuente oficial, tenemos la certeza.', en: 'If we have the official source, we have certainty.' },
+      gancho: { es: 'Si tenemos la fuente oficial, tenemos certeza.', en: 'If we have the official source, we have certainty.' },
       frecuencia: { es: '1 de cada 9 problemas', en: '1 in every 9 problems' },
       paises: { es: 'México, Chile, Colombia', en: 'Mexico, Chile, Colombia' },
       queNosPasa: {
