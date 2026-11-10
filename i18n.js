@@ -123,8 +123,8 @@ window.I18N = (function () {
     'str4.p': 'Link the technical management of the case to indicators of outcome, impact and deterrence. The goal is not only to handle cases well, but to ensure the legal effort contributes measurably to more efficient processes and to prevention.',
 
     'cierre.kicker': 'Next steps',
-    'cierre.h2': 'What comes after today',
-    'cierre.lead': 'This meeting is activity 3.1, which opens Phase 3. What we gather today feeds the drafting of the agreement, its validation and the start of planning.',
+    'cierre.h2': 'What comes next',
+    'cierre.lead': 'Phase 3 closed with the Common Minimums Agreement. On that basis Phase 4 begins: the technical roadmap and the final implementation schedule.',
     'tl.f3tag': 'Phase 3', 'tl.f3name': '· Agreement', 'tl.f4tag': 'Phase 4', 'tl.f4name': '· Planning',
     'tl.here': 'We are here',
     'tl31.h3': 'Agreement working session', 'tl31.date': 'Jun 19–Jul 03', 'tl31.owner': 'All',
@@ -135,7 +135,7 @@ window.I18N = (function () {
     'tl33.prod': 'Formal review and validation of the agreement by the Committee (CEO · CFO · CTO · Country Managers). Its closing enables Phase 4.',
     'tl4.h3': 'Start of Planning', 'tl4.date': 'from Aug 14', 'tl4.owner': 'IT Sponsor',
     'tl4.prod': 'On the agreed common minimums, build the technical roadmap and the final implementation schedule.',
-    'tl.closer': 'The roadmap’s end date will be defined in Phases 3 and 4. <strong>The Common Minimums Agreement is the formal basis of all corporate planning for the unified platform.</strong>',
+    'tl.closer': 'The roadmap’s end date will be defined in Phase 4. <strong>The Common Minimums Agreement is the formal basis of all corporate planning for the unified platform.</strong>',
 
     'footer.brand': 'Unified Development Roadmap — Legal Management. Agreement working session 3.1: Consolidated Gaps and Macroprojects.',
     'footer.phase': 'Phase 4: Strategic Planning', 'footer.date': 'November 2026', 'footer.conf': 'Internal Use & Confidential',
