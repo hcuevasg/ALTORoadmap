@@ -40,7 +40,7 @@
 
     'macro.kicker': 'From 117 gaps to a structure',
     'macro.h2': 'The nine macroprojects',
-    'macro.lead': 'The 117 gaps raised in Mexico, Chile, Colombia and the United States are not 117 separate requests: they are nine shared pains. Move through them one at a time: with the arrows, the numbered rail or the ← → keys.',
+    'macro.lead': 'The 117 gaps raised in Mexico, Chile, Colombia and the United States are not 117 separate requests: they are nine shared pains.',
 
     'agr.kicker': 'What is missing for a single legal management system',
     'agr.h2': 'The projects to be added',
